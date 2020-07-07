@@ -259,14 +259,14 @@ questions:
 
   # Images
   - variable: images.sternsoftadmin.repository
-    default:
+    default: atxwebdesigner/sternsoftadmin
     description: ""
     type: string
     required: true
     label: "sternsoftadmin repository"
     group: Images
   - variable: images.sternsoftadmin.tag
-    default: atxwebdesigner/sternsoftadmin
+    default: latest
     description: ""
     type: string
     required: true
