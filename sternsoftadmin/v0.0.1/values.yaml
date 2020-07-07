@@ -1,0 +1,78 @@
+images:
+  sternsoftadmin:
+    repository: atxwebdesigner/sternsoftadmin
+    tag: latest
+
+config:
+  clusterProvider: infrastructure
+  imagePullPolicy: IfNotPresent
+  updateStrategy: RollingUpdate
+  sternsoftadmin:
+    baseUrl: ""
+    hostname: ""
+
+service:
+  sternsoftadmin:
+    type: NodePort
+    externalTrafficPolicy: Cluster
+    nodePorts:
+      http: ""
+
+ingress:
+  sternsoftadmin:
+    certificate: ""
+    enabled: false
+    hostname: ""
+    path: /
+    tls: false
+    issuer:
+      name: letsencrypt-production
+
+persistence:
+  accessMode: ReadWriteOnce
+  enabled: false
+  existingClaim: ""
+  size: 1Gi
+  storageClass: ""
+  backup:
+    awsAccessKey: ""
+    awsSecretKey: ""
+    azureAccountKey: ""
+    azureAccountName: ""
+    bucket: ""
+    container: ""
+    enabled: false
+    endpoint: s3.amazonaws.com
+    googleProjectId: ""
+    googleServiceKey: ""
+    keepLast: 5
+    prefix: ""
+    resticPassword: pass
+    schedule: "0 0 * * *"
+    type: s3
+    restore:
+      sternsoftadminSnapshot: ""
+  velero:
+    enabled: false
+  stash:
+    enabled: false
+    keepLast: 30
+    paused: false
+    repository: stash-stash
+    schedule: "0 0 * * *"
+    restore:
+    snapshot: ""
+
+probes:
+  liveness:
+    initialDelaySeconds: 120
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
+  readiness:
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1

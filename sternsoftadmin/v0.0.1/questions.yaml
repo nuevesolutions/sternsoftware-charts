@@ -1,0 +1,274 @@
+categories:
+  - Server
+questions:
+  # Config
+  - variable: config.clusterProvider
+    default: infrastructure
+    description: ""
+    type: enum
+    options:
+      - infrastructure
+      - eks
+      - aks
+      - gke
+    required: true
+    label: "cluster provider"
+    group: Config
+  - variable: config.imagePullPolicy
+    default: IfNotPresent
+    description: ""
+    type: enum
+    options:
+      - IfNotPresent
+      - Always
+    required: true
+    label: "pull policy"
+    group: Config
+  - variable: config.updateStrategy
+    default: RollingUpdate
+    description: ""
+    type: enum
+    options:
+      - RollingUpdate
+      - Recreate
+    required: true
+    label: "update strategy"
+    group: Config
+
+  # Persistence
+  - variable: persistence.enabled
+    default: false
+    description: ""
+    type: boolean
+    required: true
+    label: enabled
+    show_subquestion_if: true
+    group: Persistence
+    subquestions:
+      - variable: persistence.size
+        default: 1Gi
+        description: ""
+        type: string
+        required: true
+        label: size
+      - variable: persistence.storageClass
+        default: ""
+        description: ""
+        type: storageclass
+        required: false
+        label: "storage class"
+      - variable: persistence.accessMode
+        default: ReadWriteOnce
+        description: ""
+        type: enum
+        options:
+          - ReadWriteOnce
+          - ReadWriteMany
+          - ReadOnlyMany
+        required: false
+        label: "access mode"
+      - variable: persistence.existingClaim
+        default: ""
+        description: ""
+        type: pvc
+        required: false
+        label: "existing claim"
+      - variable: persistence.backup.enabled
+        default: false
+        description: ""
+        type: boolean
+        required: true
+        label: "backup enabled"
+      - variable: persistence.backup.resticPassword
+        default: pass
+        description: ""
+        type: password
+        required: true
+        show_if: persistence.backup.enabled=true
+        label: "backup restic password"
+      - variable: persistence.backup.schedule
+        default: "0 0 * * *"
+        description: ""
+        type: string
+        required: true
+        show_if: persistence.backup.enabled=true
+        label: "backup schedule"
+      - variable: persistence.backup.keepLast
+        default: 5
+        description: ""
+        type: int
+        required: true
+        show_if: persistence.backup.enabled=true
+        label: "backup keep last"
+      - variable: persistence.backup.type
+        default: s3
+        description: ""
+        type: enum
+        options:
+          - gcs
+          - s3
+          - azure
+        required: false
+        show_if: persistence.backup.enabled=true
+        label: "backup type"
+      - variable: persistence.backup.awsAccessKey
+        default: ""
+        description: ""
+        type: string
+        required: false
+        show_if: persistence.backup.enabled=true&&persistence.backup.type=s3
+        label: "aws access key"
+      - variable: persistence.backup.awsSecretKey
+        default: ""
+        description: ""
+        type: password
+        required: false
+        show_if: persistence.backup.enabled=true&&persistence.backup.type=s3
+        label: "aws secret key"
+      - variable: persistence.backup.googleProjectId
+        default: ""
+        description: ""
+        type: string
+        required: false
+        show_if: persistence.backup.enabled=true&&persistence.backup.type=gcs
+        label: "google project id"
+      - variable: persistence.backup.googleServiceKey
+        default: ""
+        description: ""
+        type: password
+        required: false
+        show_if: persistence.backup.enabled=true&&persistence.backup.type=gcs
+        label: "google service key"
+      - variable: persistence.backup.azureAccountName
+        default: ""
+        description: ""
+        type: string
+        required: false
+        show_if: persistence.backup.enabled=true&&persistence.backup.type=azure
+        label: "azure account name"
+      - variable: persistence.backup.azureAccountKey
+        default: ""
+        description: ""
+        type: password
+        required: false
+        show_if: persistence.backup.enabled=true&&persistence.backup.type=azure
+        label: "azure account key"
+      - variable: persistence.backup.container
+        default: ""
+        description: ""
+        type: string
+        required: false
+        show_if: persistence.backup.enabled=true&&persistence.backup.type=azure
+        label: "backup container"
+      - variable: persistence.backup.bucket
+        default: ""
+        description: ""
+        type: string
+        required: false
+        show_if: persistence.backup.enabled=true
+        label: "backup bucket"
+      - variable: persistence.backup.endpoint
+        default: s3.amazonaws.com
+        description: ""
+        type: string
+        required: true
+        show_if: persistence.backup.enabled=true&&persistence.backup.type=s3
+        label: "backup endpoint"
+      - variable: persistence.backup.prefix
+        default: ""
+        description: ""
+        type: string
+        required: false
+        show_if: persistence.backup.enabled=true
+        label: "backup prefix"
+      - variable: persistence.backup.restore.sternsoftadminSnapshot
+        default: ""
+        description: ""
+        type: string
+        required: false
+        show_if: persistence.backup.enabled=true
+        label: "backup restore sternsoftadmin snapshot"
+
+  # Services and Load Balancing
+  - variable: ingress.sternsoftadmin.enabled
+    default: true
+    description: ""
+    type: boolean
+    label: "sternsoftadmin ingress enabled"
+    show_subquestion_if: true
+    group: "Services and Load Balancing"
+    subquestions:
+      - variable: ingress.sternsoftadmin.tls
+        default: false
+        description: ""
+        type: boolean
+        required: true
+        label: "sternsoftadmin ingress tls"
+      - variable: ingress.sternsoftadmin.hostname
+        default: xip.io
+        description: ""
+        type: hostname
+        required: true
+        label: "sternsoftadmin ingress hostname"
+      - variable: ingress.sternsoftadmin.path
+        default: /
+        description: ""
+        type: string
+        required: true
+        label: "sternsoftadmin ingress path"
+      - variable: ingress.sternsoftadmin.issuer.name
+        default: letsencrypt-staging
+        description: ""
+        type: enum
+        show_if: ingress.sternsoftadmin.tls=true
+        options:
+          - none
+          - letsencrypt-staging
+          - letsencrypt-prod
+        required: true
+        label: "sternsoftadmin ingress issuer name"
+      - variable: ingress.sternsoftadmin.certificate
+        default: ""
+        description: ""
+        type: string
+        show_if: ingress.sternsoftadmin.tls=true&&ingress.sternsoftadmin.issuer.name=none
+        required: false
+        label: "sternsoftadmin ingress certificate"
+  - variable: service.sternsoftadmin.type
+    default: NodePort
+    description: ""
+    type: enum
+    show_if: ingress.sternsoftadmin.enabled=false
+    options:
+      - ClusterIP
+      - NodePort
+      - LoadBalancer
+    required: true
+    label: "sternsoftadmin service type"
+    show_subquestion_if: NodePort
+    group: "Services and Load Balancing"
+    subquestions:
+      - variable: service.sternsoftadmin.nodePorts.http
+        default: ""
+        description: ""
+        type: int
+        min: 30000
+        max: 32767
+        show_if: ingress.sternsoftadmin.enabled=false
+        label: "sternsoftadmin http port"
+
+  # Images
+  - variable: images.sternsoftadmin.repository
+    default:
+    description: ""
+    type: string
+    required: true
+    label: "sternsoftadmin repository"
+    group: Images
+  - variable: images.sternsoftadmin.tag
+    default: atxwebdesigner/sternsoftadmin
+    description: ""
+    type: string
+    required: true
+    label: "sternsoftadmin tag"
+    group: Images
