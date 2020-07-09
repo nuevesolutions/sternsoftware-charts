@@ -1,0 +1,35 @@
+{{- if .Values.ingress.sternsoftadmin.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "sternsoft.fullname" . }}-sternsoftadmin
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    {{- if .Values.ingress.sternsoftadmin.tls }}
+    {{- if (empty .Values.ingress.sternsoftadmin.certificate) }}
+    certmanager.k8s.io/cluster-issuer: {{ .Values.ingress.sternsoftadmin.issuer.name }}
+    kubernetes.io/tls-acme: 'true'
+    {{- end }}
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    {{- end }}
+  labels:
+    app: {{ template "sternsoft.name" . }}-sternsoftadmin
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  rules:
+    - host: {{ .Values.ingress.sternsoftadmin.hostname }}
+      http:
+        paths:
+          - path: {{ .Values.ingress.sternsoftadmin.path }}
+            backend:
+              serviceName: {{ template "sternsoft.fullname" . }}-sternsoftadmin
+              servicePort: http
+  {{- if .Values.ingress.sternsoftadmin.tls }}
+  tls:
+    - secretName: {{ template "sternsoft.sternsoftadmin-certificate" . }}
+      hosts:
+        - {{ .Values.ingress.sternsoftadmin.hostname }}
+  {{- end }}
+{{- end }}

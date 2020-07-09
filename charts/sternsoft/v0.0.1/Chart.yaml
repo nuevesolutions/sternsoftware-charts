@@ -1,0 +1,13 @@
+name: sternsoft
+home: https://github.com/ravi/sternsoft
+icon: http://frozen-mesa-16416.herokuapp.com/static/media/logo.519a475f.png
+version: 0.0.1
+appVersion: latest
+description: 'Sternsoft'
+keywords:
+  - sternsoft
+sources:
+  - https://github.com/ravi/sternsoft
+maintainers:
+  - name: 'Ravi'
+    email: ravi@austinwebdeveloper.co
