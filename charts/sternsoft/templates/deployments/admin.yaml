@@ -7,37 +7,37 @@ metadata:
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    spec:
-      # affinity:
-      #   nodeAffinity:
-      #     preferredDuringSchedulingIgnoredDuringExecution:
-      #       - weight: 100
-      #         preference:
-      #           matchExpressions:
-      #             - key: lifecycle
-      #               operator: In
-      #               values:
-      #                 - spot
-      containers:
-        - name: {{ template "sternsoft.fullname" . }}-admin
-          image: {{ .Values.images.admin.repository }}:{{ .Values.images.admin.tag }}
-          imagePullPolicy: {{ .Values.config.imagePullPolicy }}
-          ports:
-            - name: container
-              containerPort: 3000
-          env:
-            - name: API_BASE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ template "sternsoft.fullname" . }}
-                  key: api_base_url
-          livenessProbe:
-            httpGet:
-              path: /
-              port: container
+  spec:
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            preference:
+              matchExpressions:
+                - key: lifecycle
+                  operator: In
+                  values:
+                    - spot
+    containers:
+      - name: {{ template "sternsoft.fullname" . }}-admin
+        image: {{ .Values.images.admin.repository }}:{{ .Values.images.admin.tag }}
+        imagePullPolicy: {{ .Values.config.imagePullPolicy }}
+        ports:
+          - name: container
+            containerPort: 3000
+        env:
+          - name: API_BASE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ template "sternsoft.fullname" . }}
+                key: api_base_url
+        livenessProbe:
+          httpGet:
+            path: /
+            port: container
 {{ toYaml .Values.probes.liveness | indent 12 }}
-          readinessProbe:
-            httpGet:
-              path: /
-              port: container
+        readinessProbe:
+          httpGet:
+            path: /
+            port: container
 {{ toYaml .Values.probes.readiness | indent 12 }}
