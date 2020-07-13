@@ -1,3 +1,0 @@
-# sternsoftadmin
-
-> sternsoft admin part

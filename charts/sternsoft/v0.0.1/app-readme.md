@@ -1,3 +1,0 @@
-# sternsoft
-
-> Sternsoft
