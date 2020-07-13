@@ -8,16 +8,16 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              preference:
-                matchExpressions:
-                  - key: lifecycle
-                    operator: In
-                    values:
-                      - spot
+      # affinity:
+      #   nodeAffinity:
+      #     preferredDuringSchedulingIgnoredDuringExecution:
+      #       - weight: 100
+      #         preference:
+      #           matchExpressions:
+      #             - key: lifecycle
+      #               operator: In
+      #               values:
+      #                 - spot
       containers:
         - name: {{ template "sternsoft.fullname" . }}-admin
           image: {{ .Values.images.admin.repository }}:{{ .Values.images.admin.tag }}
