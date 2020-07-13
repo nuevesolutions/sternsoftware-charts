@@ -705,21 +705,21 @@ questions:
 
 # Images
   - variable: images.admin.repository
-    default:
+    default: cvtecregistry.azurecr.io/ninet
     description: ''
     type: string
     required: true
     label: 'admin repository'
     group: Images
   - variable: images.admin.tag
-    default: atxwebdesigner/sternsoftadmin
+    default: 1.0.0
     description: ''
     type: string
     required: true
     label: 'admin tag'
     group: Images
   - variable: images.api.repository
-    default: api
+    default: nginx
     description: ''
     type: string
     required: true

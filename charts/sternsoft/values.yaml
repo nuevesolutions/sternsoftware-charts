@@ -1,7 +1,7 @@
 images:
   admin:
-    repository: atxwebdesigner/sternsoftadmin
-    tag: latest
+    repository: cvtecregistry.azurecr.io/ninet
+    tag: 1.0.0
   api:
     repository: nginx
     tag: latest
