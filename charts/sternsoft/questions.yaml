@@ -50,19 +50,19 @@ questions:
     label: 'azure container'
     group: azure
   - variable: config.api.azureInstrumentationKey
-    default: 'admin-prod'
+    default: ''
     description: ''
     type: password
     required: false
     label: 'azure instrumentation key'
     group: azure
   - variable: config.api.azureStorageAccessKey
-    default: 'admin-prod'
+    default: ''
     description: ''
     type: password
     required: false
     label: 'azure storage access key'
-    group: Config
+    group: azure
   - variable: config.api.azureStorageAccount
     default: 'cvtecprod'
     description: ''
