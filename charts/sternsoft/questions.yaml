@@ -48,35 +48,35 @@ questions:
     type: string
     required: false
     label: 'azure container'
-    group: Config
+    group: azure
   - variable: config.api.azureInstrumentationKey
     default: 'admin-prod'
     description: ''
-    type: string
+    type: password
     required: false
     label: 'azure instrumentation key'
-    group: Config
+    group: azure
   - variable: config.api.azureStorageAccessKey
     default: 'admin-prod'
     description: ''
-    type: string
+    type: password
     required: false
-    label: 'azure azure storage access key'
-    group: Configs
+    label: 'azure storage access key'
+    group: Config
   - variable: config.api.azureStorageAccount
     default: 'cvtecprod'
     description: ''
     type: string
     required: false
-    label: 'azure azureStorageAccount'
-    group: Config
+    label: 'azure storage account'
+    group: azure
   - variable: config.api.clientKey
-    default: 'cvtecprod'
+    default: ''
     description: ''
-    type: string
+    type: password
     required: false
     label: 'client key'
-    group: Config
+    group: azure
   # - variable: config.api.db_config_uri
   #   default: 'cvtecprod'
   #   description: ''
@@ -87,74 +87,68 @@ questions:
   - variable: config.api.dockerRegistryServerPassword
     default: ''
     description: ''
-    type: string
+    type: password
     required: false
     label: 'docker registry server password'
-    group: Config
+    group: Docker
   - variable: config.api.dockerRegistryServerUrl
     default: 'https://cvtecregistry.azurecr.io'
     description: ''
     type: string
     required: false
-    label: 'dockerRegistryServerUrl'
-    group: Config
+    label: 'docker registry server url'
+    group: Docker
   - variable: config.api.dockerRegistryServerUsername
     default: 'cvtecregistry'
     description: ''
     type: string
     required: false
-    label: 'dockerRegistryServerUsername'
-    group: Config
+    label: 'docker registry server username'
+    group: Docker
   - variable: config.api.fileSaveLocation
     default: 'cloud'
     description: ''
     type: string
     required: false
-    label: 'fileSaveLocation'
-    group: Config
+    label: 'file save location'
+    group: Firebase
   - variable: config.api.firebaseConfig
     default: ''
     description: ''
     type: string
     required: false
     label: 'firebase config'
-    group: Config
+    group: Firebase
   - variable: config.api.firebaseDB
     default: ''
     description: ''
     type: string
     required: false
     label: 'firebase DB'
-    group: Config
+    group: Firebase
   - variable: config.api.mailDomain
     default: 'mail.winningfotos.com'
     description: ''
     type: string
     required: false
     label: 'mail domain'
-    group: Config
+    group: Mail
   - variable: config.api.mailFromWho
     default: 'support<support@mail.testmailer.local>'
     description: ''
     type: string
     required: false
     label: 'mail from who'
+    group: Mail
   - variable: config.api.mailgunApiKey
     default: ''
     description: ''
     type: string
     required: false
     label: 'mailgun api key'
-    group: Config
-  - variable: config.api.mailgunApiKey
-    default: ''
-    description: ''
-    type: string
-    required: false
-    label: 'mailgun api key'
-    group: Config
+    group: Mail
   - variable: config.api.maxVoteNumEveryDay
-    default: ''
+    default: '50'
     description: ''
     type: string
     required: false
@@ -170,14 +164,14 @@ questions:
   - variable: config.api.sessionSecret
     default: ''
     description: ''
-    type: string
+    type: password
     required: false
     label: 'session secret'
     group: Config
   - variable: config.api.toolsClientKey
     default: ''
     description: ''
-    type: string
+    type: password
     required: false
     label: 'tools client key'
     group: Config
@@ -194,21 +188,21 @@ questions:
     type: string
     required: false
     label: 'twilio account sid'
-    group: Config
+    group: Twilio
   - variable: config.api.twilioAuthToken
     default: ''
     description: ''
-    type: string
+    type: password
     required: false
     label: 'twilio auth token'
-    group: Config
+    group: Twilio
   - variable: config.api.twilioPhoneNumber
     default: ''
     description: ''
     type: string
     required: false
     label: 'twilio phone number'
-    group: Config
+    group: Twilio
   - variable: config.api.websiteHttploggingRetentionDays
     default: '7'
     description: ''
@@ -219,9 +213,9 @@ questions:
   - variable: config.api.websitesEnableAppServiceStorage
     default: 'false'
     description: ''
-    type: string
+    type: boolean
     required: false
-    label: 'websites enable appservicestorage'
+    label: 'websites enable app service storage'
     group: Config
   - variable: config.api.websitesPort
     default: '8900'
