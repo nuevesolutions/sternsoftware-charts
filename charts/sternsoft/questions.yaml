@@ -42,6 +42,194 @@ questions:
     required: false
     label: 'api base url'
     group: Config
+  - variable: config.api.azureContainer
+    default: 'admin-prod'
+    description: ''
+    type: string
+    required: false
+    label: 'azure container'
+    group: Config
+  - variable: config.api.azureInstrumentationKey
+    default: 'admin-prod'
+    description: ''
+    type: string
+    required: false
+    label: 'azure instrumentation key'
+    group: Config
+  - variable: config.api.azureStorageAccessKey
+    default: 'admin-prod'
+    description: ''
+    type: string
+    required: false
+    label: 'azure azure storage access key'
+    group: Configs
+  - variable: config.api.azureStorageAccount
+    default: 'cvtecprod'
+    description: ''
+    type: string
+    required: false
+    label: 'azure azureStorageAccount'
+    group: Config
+  - variable: config.api.clientKey
+    default: 'cvtecprod'
+    description: ''
+    type: string
+    required: false
+    label: 'client key'
+    group: Config
+  # - variable: config.api.db_config_uri
+  #   default: 'cvtecprod'
+  #   description: ''
+  #   type: string
+  #   required: false
+  #   label: 'db_config_uri'
+  #   group: Config
+  - variable: config.api.dockerRegistryServerPassword
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'docker registry server password'
+    group: Config
+  - variable: config.api.dockerRegistryServerUrl
+    default: 'https://cvtecregistry.azurecr.io'
+    description: ''
+    type: string
+    required: false
+    label: 'dockerRegistryServerUrl'
+    group: Config
+  - variable: config.api.dockerRegistryServerUsername
+    default: 'cvtecregistry'
+    description: ''
+    type: string
+    required: false
+    label: 'dockerRegistryServerUsername'
+    group: Config
+  - variable: config.api.fileSaveLocation
+    default: 'cloud'
+    description: ''
+    type: string
+    required: false
+    label: 'fileSaveLocation'
+    group: Config
+  - variable: config.api.firebaseConfig
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'firebase config'
+    group: Config
+  - variable: config.api.firebaseDB
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'firebase DB'
+    group: Config
+  - variable: config.api.mailDomain
+    default: 'mail.winningfotos.com'
+    description: ''
+    type: string
+    required: false
+    label: 'mail domain'
+    group: Config
+  - variable: config.api.mailFromWho
+    default: 'support<support@mail.testmailer.local>'
+    description: ''
+    type: string
+    required: false
+    label: 'mail from who'
+  - variable: config.api.mailgunApiKey
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'mailgun api key'
+    group: Config
+  - variable: config.api.mailgunApiKey
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'mailgun api key'
+    group: Config
+  - variable: config.api.maxVoteNumEveryDay
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'max vote num every day'
+    group: Config
+  - variable: config.api.port
+    default: '8900'
+    description: ''
+    type: string
+    required: false
+    label: 'port'
+    group: Config
+  - variable: config.api.sessionSecret
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'session secret'
+    group: Config
+  - variable: config.api.toolsClientKey
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'tools client key'
+    group: Config
+  - variable: config.api.toolsDomain
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'tools domain'
+    group: Config
+  - variable: config.api.twilio account sid
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'twilio account sid'
+    group: Config
+  - variable: config.api.twilioAuthToken
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'twilio auth token'
+    group: Config
+  - variable: config.api.twilioPhoneNumber
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'twilio phone number'
+    group: Config
+  - variable: config.api.websiteHttploggingRetentionDays
+    default: '7'
+    description: ''
+    type: string
+    required: false
+    label: 'website http logging retention days'
+    group: Config
+  - variable: config.api.websitesEnableAppServiceStorage
+    default: 'false'
+    description: ''
+    type: string
+    required: false
+    label: 'websites enable appservicestorage'
+    group: Config
+  - variable: config.api.websitesPort
+    default: '8900'
+    description: ''
+    type: string
+    required: false
+    label: 'websites port'
+    group: Config
 
 # MongoDB Config
   - variable: config.mongodb.internal
