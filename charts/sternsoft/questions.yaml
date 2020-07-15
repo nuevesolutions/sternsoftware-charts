@@ -4,7 +4,7 @@ questions:
 
 # Config
   - variable: config.clusterProvider
-    default: infrastructure
+    default: aks
     description: ''
     type: enum
     options:
