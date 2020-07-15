@@ -73,9 +73,8 @@ Calculate admin base url
 {{- else }}
 {{- if .Values.ingress.admin.enabled }}
 {{- $hostname := ((empty (include "sternsoft.admin-hostname" .)) | ternary .Values.ingress.admin.hostname (include "sternsoft.admin-hostname" .)) }}
-{{- $path := (eq .Values.ingress.admin.path "/" | ternary "" .Values.ingress.admin.path) }}
 {{- $protocol := (.Values.ingress.admin.tls | ternary "https" "http") }}
-{{- printf "%s://%s%s" $protocol $hostname $path }}
+{{- printf "%s://%s" $protocol $hostname }}
 {{- else }}
 {{- printf "http://%s" (include "sternsoft.admin-hostname" .) }}
 {{- end }}
@@ -106,9 +105,8 @@ Calculate api base url
 {{- else }}
 {{- if .Values.ingress.api.enabled }}
 {{- $hostname := ((empty (include "sternsoft.api-hostname" .)) | ternary .Values.ingress.api.hostname (include "sternsoft.api-hostname" .)) }}
-{{- $path := (eq .Values.ingress.api.path "/" | ternary "" .Values.ingress.api.path) }}
 {{- $protocol := (.Values.ingress.api.tls | ternary "https" "http") }}
-{{- printf "%s://%s%s" $protocol $hostname $path }}
+{{- printf "%s://%s" $protocol $hostname }}
 {{- else }}
 {{- printf "http://%s" (include "sternsoft.api-hostname" .) }}
 {{- end }}
