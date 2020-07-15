@@ -42,11 +42,11 @@ spec:
             - name: container
               containerPort: 3000
           env:
-            - name: API_BASE_URL
+            - name: BACKEND_BASE_URL
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "sternsoft.fullname" . }}
-                  key: api_base_url
+                  key: backend_base_url
           livenessProbe:
             httpGet:
               path: /
