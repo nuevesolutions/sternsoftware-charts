@@ -41,7 +41,7 @@ spec:
           imagePullPolicy: {{ .Values.config.imagePullPolicy }}
           ports:
             - name: container
-              containerPort: 80
+              containerPort: 8900
           env:
             - name: ADMIN_DOMAIN
               valueFrom:
