@@ -120,7 +120,7 @@ Calculate mongodb url
 {{- $mongodb := .Values.config.mongodb }}
 {{- if $mongodb.internal }}
 {{- $credentials := (printf "%s:%s" $mongodb.username $mongodb.password) }}
-{{- printf "mongodbql://%s@%s-mongodb:27017/%s" $credentials (include "sternsoft.fullname" .) $mongodb.database }}
+{{- printf "mongodb://%s@%s-mongodb:27017/%s" $credentials (include "sternsoft.fullname" .) $mongodb.database }}
 {{- else }}
 {{- if $mongodb.url }}
 {{- printf $mongodb.url }}
