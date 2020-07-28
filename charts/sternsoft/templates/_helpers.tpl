@@ -125,6 +125,7 @@ Calculate mongodb url
 {{- if $mongodb.url }}
 {{- printf $mongodb.url }}
 {{- else }}
+{{- $credentials := (printf "%s:%s" $mongodb.username $mongodb.password) }}
 {{- printf "mongodb://%s@%s:%s/%s" $credentials $mongodb.host $mongodb.port $mongodb.database }}
 {{- end }}
 {{- end }}
