@@ -1,3 +1,3 @@
 # sternsoft
 
-> sternsoft application
+> sternsoft FE, BE and DB

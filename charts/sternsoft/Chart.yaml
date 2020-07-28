@@ -3,11 +3,11 @@ home: https://github.com/ravi/sternsoft
 icon: http://frozen-mesa-16416.herokuapp.com/static/media/logo.519a475f.png
 version: 0.0.1
 appVersion: latest
-description: 'sternsoft application'
+description: "sternsoft FE, BE and DB"
 keywords:
   - sternsoft
 sources:
   - https://github.com/ravi/sternsoft
 maintainers:
-  - name: 'Jam Risser'
+  - name: "Jam Risser"
     email: jam@nuevesolutions.com
