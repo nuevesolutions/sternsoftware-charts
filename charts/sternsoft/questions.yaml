@@ -48,7 +48,6 @@ questions:
     type: boolean
     required: true
     label: internal
-    show_if: config.api.internal=true
     group: 'API Config'
   - variable: config.api.azureContainer
     default: 'admin-prod'
