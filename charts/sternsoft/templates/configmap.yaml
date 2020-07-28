@@ -38,10 +38,10 @@ data:
   mail_from_who: {{ .Values.config.api.mailFromWho | quote }}
   max_vote_num_every_day: {{ .Values.config.api.maxVoteNumEveryDay | quote }}
   node_env: 'production'
-  port: {{ .Values.config.api.port | quote  }}
+  port: '8900'
   tools_domain: {{ .Values.config.api.toolsDomain | quote  }}
   twilio_account_sid: {{ .Values.config.api.twilioAccountSid  | quote }}
   twilio_phone_number: {{ .Values.config.api.twilioPhoneNumber  | quote }}
   website_httplogging_retention_days:  {{ .Values.config.api.websiteHttploggingRetentionDays | quote  }}
   websites_enable_app_service_storage:  {{ .Values.config.api.websitesEnableAppServiceStorage | quote  }}
-  websites_port: {{ .Values.config.api.websitesPort | quote  }}
+  websites_port: '8900'

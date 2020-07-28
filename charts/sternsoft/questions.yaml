@@ -176,14 +176,14 @@ questions:
     label: 'max vote num every day'
     show_if: config.api.internal=true
     group: 'API Config'
-  - variable: config.api.port
-    default: '8900'
-    description: ''
-    type: string
-    required: false
-    label: 'port'
-    show_if: config.api.internal=true
-    group: 'API Config'
+  # - variable: config.api.port
+  #   default: '8900'
+  #   description: ''
+  #   type: string
+  #   required: false
+  #   label: 'port'
+  #   show_if: config.api.internal=true
+  #   group: 'API Config'
   - variable: config.api.sessionSecret
     default: ''
     description: ''
@@ -248,14 +248,14 @@ questions:
     label: 'websites enable app service storage'
     show_if: config.api.internal=true
     group: 'API Config'
-  - variable: config.api.websitesPort
-    default: '8900'
-    description: ''
-    type: string
-    required: false
-    label: 'websites port'
-    show_if: config.api.internal=true
-    group: 'API Config'
+  # - variable: config.api.websitesPort
+  #   default: '8900'
+  #   description: ''
+  #   type: string
+  #   required: false
+  #   label: 'websites port'
+  #   show_if: config.api.internal=true
+  #   group: 'API Config'
 
 # MongoDB Config
   - variable: config.mongodb.internal
