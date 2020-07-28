@@ -41,7 +41,14 @@ questions:
     type: string
     required: false
     label: 'api base url'
-    group: Config
+    group: FE Config
+  - variable: config.api.internal
+    default: true
+    description: ''
+    type: boolean
+    required: true
+    label: internal
+    group: 'API Config'
   - variable: config.api.azureContainer
     default: 'admin-prod'
     description: ''

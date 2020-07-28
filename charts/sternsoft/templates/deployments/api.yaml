@@ -1,3 +1,4 @@
+{{- if .Values.config.api.internal }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -217,3 +218,4 @@ spec:
               path: /
               port: container
 {{ toYaml .Values.probes.readiness | indent 12 }}
+{{- end}}

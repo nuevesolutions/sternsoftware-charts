@@ -1,4 +1,4 @@
-{{- if .Values.ingress.api.enabled }}
+{{- if (and .Values.config.api.internal .Values.ingress.api.enabled) }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

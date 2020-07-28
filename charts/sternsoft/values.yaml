@@ -17,6 +17,7 @@ config:
     baseUrl: ""
     hostname: ""
   api:
+    internal: true
     baseUrl: ""
     hostname: ""
     appDescription: ""
