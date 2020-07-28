@@ -160,35 +160,35 @@ questions:
     type: string
     required: false
     label: 'max vote num every day'
-    group: Config
+    group: 'API Config'
   - variable: config.api.port
     default: '8900'
     description: ''
     type: string
     required: false
     label: 'port'
-    group: Config
+    group: 'API Config'
   - variable: config.api.sessionSecret
     default: ''
     description: ''
     type: password
     required: false
     label: 'session secret'
-    group: Config
+    group: 'API Config'
   - variable: config.api.toolsClientKey
     default: ''
     description: ''
     type: password
     required: false
     label: 'tools client key'
-    group: Config
+    group: 'API Config'
   - variable: config.api.toolsDomain
     default: ''
     description: ''
     type: string
     required: false
     label: 'tools domain'
-    group: Config
+    group: 'API Config'
   - variable: config.api.twilio account sid
     default: ''
     description: ''
@@ -216,21 +216,21 @@ questions:
     type: string
     required: false
     label: 'website http logging retention days'
-    group: Config
+    group: 'API Config'
   - variable: config.api.websitesEnableAppServiceStorage
     default: 'false'
     description: ''
     type: boolean
     required: false
     label: 'websites enable app service storage'
-    group: Config
+    group: 'API Config'
   - variable: config.api.websitesPort
     default: '8900'
     description: ''
     type: string
     required: false
     label: 'websites port'
-    group: Config
+    group: 'API Config'
 
 # MongoDB Config
   - variable: config.mongodb.internal
