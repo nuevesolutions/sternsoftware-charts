@@ -541,7 +541,7 @@ questions:
     show_if: config.mongodb.internal=false
     group: 'MongoDB Config'
   - variable: config.mongodb.port
-    default: 27017
+    default: "27017"
     description: ''
     type: int
     min: 0
