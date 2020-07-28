@@ -42,6 +42,34 @@ questions:
     required: false
     label: 'api base url'
     group: Config
+  - variable: config.api.internal
+    default: true
+    description: ''
+    type: boolean
+    required: true
+    label: internal
+    group: API Config
+   - variable: config.api.appTitle
+    default: 'CVTec Dashboard'
+    description: ''
+    type: string
+    required: false
+    label: 'App Dashboard'
+    group: API Config
+   - variable: config.api.appDescription
+    default: 'CVTec Dashboard'
+    description: ''
+    type: string
+    required: false
+    label: 'App Description'
+    group: API Config
+   - variable: config.api.appKeywords
+    default: 'CVTec Dashboard'
+    description: ''
+    type: string
+    required: false
+    label: 'App Keywords'
+    group: API Config
   - variable: config.api.azureContainer
     default: 'admin-prod'
     description: ''
@@ -153,35 +181,35 @@ questions:
     type: string
     required: false
     label: 'max vote num every day'
-    group: Config
-  - variable: config.api.port
-    default: '8900'
-    description: ''
-    type: string
-    required: false
-    label: 'port'
-    group: Config
+    group: API config
+  # - variable: config.api.port
+  #   default: '8900'
+  #   description: ''
+  #   type: string
+  #   required: false
+  #   label: 'port'
+  #   group: API config
   - variable: config.api.sessionSecret
     default: ''
     description: ''
     type: password
     required: false
     label: 'session secret'
-    group: Config
+    group: API Config
   - variable: config.api.toolsClientKey
     default: ''
     description: ''
     type: password
     required: false
     label: 'tools client key'
-    group: Config
+    group: API config
   - variable: config.api.toolsDomain
     default: ''
     description: ''
     type: string
     required: false
     label: 'tools domain'
-    group: Config
+    group: API Config
   - variable: config.api.twilio account sid
     default: ''
     description: ''
@@ -209,21 +237,21 @@ questions:
     type: string
     required: false
     label: 'website http logging retention days'
-    group: Config
+    group: API Config
   - variable: config.api.websitesEnableAppServiceStorage
     default: 'false'
     description: ''
     type: boolean
     required: false
     label: 'websites enable app service storage'
-    group: Config
-  - variable: config.api.websitesPort
-    default: '8900'
-    description: ''
-    type: string
-    required: false
-    label: 'websites port'
-    group: Config
+    group: API Config
+  # - variable: config.api.websitesPort
+  #   default: '8900'
+  #   description: ''
+  #   type: string
+  #   required: false
+  #   label: 'websites port'
+  #   group: API Config
 
 # MongoDB Config
   - variable: config.mongodb.internal

@@ -23,9 +23,9 @@ data:
   {{- end }}
   backend_base_url: {{ template "sternsoft.api-base-url" . }}
   admin_domain: {{ template "sternsoft.admin-base-url" . }}
-  app_description: 'CVTec Dashboard'
-  app_keywords: 'CVTec Dashboard'
-  app_title: 'CVTec Dashboard'
+  app_title: {{ .Values.config.api.appTitle | quote  }}
+  app_description: {{ .Values.config.api.appDescription | quote  }}
+  app_keywords: {{ .Values.config.api.appKeyword | quote  }}
   azure_container: {{ .Values.config.api.azureContainer | quote  }}
   azure_storage_account: {{ .Values.config.api.azureStorageAccount | quote  }}
   debug: '*'
@@ -38,10 +38,10 @@ data:
   mail_from_who: {{ .Values.config.api.mailFromWho | quote }}
   max_vote_num_every_day: {{ .Values.config.api.maxVoteNumEveryDay | quote }}
   node_env: 'production'
-  port: {{ .Values.config.api.port | quote  }}
+  port: '8900'
   tools_domain: {{ .Values.config.api.toolsDomain | quote  }}
   twilio_account_sid: {{ .Values.config.api.twilioAccountSid  | quote }}
   twilio_phone_number: {{ .Values.config.api.twilioPhoneNumber  | quote }}
   website_httplogging_retention_days:  {{ .Values.config.api.websiteHttploggingRetentionDays | quote  }}
   websites_enable_app_service_storage:  {{ .Values.config.api.websitesEnableAppServiceStorage | quote  }}
-  websites_port: {{ .Values.config.api.websitesPort | quote  }}
+  websites_port: '8900'

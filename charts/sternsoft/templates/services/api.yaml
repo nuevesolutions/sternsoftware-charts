@@ -1,3 +1,4 @@
+{{- if .Values.config.api.internal }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -26,3 +27,4 @@ spec:
   selector:
     app: {{ template "sternsoft.name" . }}-api
     release: {{ .Release.Name }}
+{{- end }}

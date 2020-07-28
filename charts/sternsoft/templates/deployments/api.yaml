@@ -1,3 +1,4 @@
+{{- if .Values.config.api.internal }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -91,7 +92,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ template "sternsoft.fullname" . }}
-                  key: db_config_uri
+                  key: mongodb_url
             - name: DEBUG
               valueFrom:
                 configMapKeyRef:
@@ -217,3 +218,4 @@ spec:
               path: /
               port: container
 {{ toYaml .Values.probes.readiness | indent 12 }}
+{{- end }}

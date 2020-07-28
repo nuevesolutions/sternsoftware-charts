@@ -17,11 +17,12 @@ config:
     baseUrl: ""
     hostname: ""
   api:
+    internal: false
     baseUrl: ""
     hostname: ""
-    appDescription: ""
-    appKeywords: ""
-    appTitle: ""
+    appDescription: "CVTec Dashboard"
+    appKeywords: "CVTec Dashboard"
+    appTitle: "CVTec Dashboard"
     azureContainer: ""
     azureInstrumentationKey: ""
     azureStorageAccessKey: ""
@@ -39,7 +40,7 @@ config:
     mailFromWho: ""
     mailgunApiKey: ""
     maxVoteNumEveryDay: ""
-    port: ""
+    port: "8900"
     sessionSecret: ""
     toolsClientKey: ""
     toolsDomain: ""
@@ -48,7 +49,7 @@ config:
     twilioPhoneNumber: ""
     websiteHttploggingRetentionDays: ""
     websitesEnableAppServiceStorage: ""
-    websitesPort: ""
+    websitesPort: "8900"
   mongodb:
     customConfig: ""
     database: sternsoft
