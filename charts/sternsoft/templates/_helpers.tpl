@@ -114,29 +114,18 @@ Calculate api base url
 {{- end }}
 
 {{/*
-Calculate mongodb server
-*/}}
-{{- define "sternsoft.mongodb-server" }}
-{{- if .Values.config.mongodb.replicaSet.enabled }}
-{{- printf "%s-mongodb-0.%s-mongodb-gvr.%s.svc,%s-mongodb-1.%s-mongodb-gvr.%s.svc,%s-mongodb-2.%s-mongodb-gvr.%s.svc" (include "sternsoft.fullname" .) (include "sternsoft.fullname" .) .Release.Namespace (include "sternsoft.fullname" .) (include "sternsoft.fullname" .) .Release.Namespace (include "sternsoft.fullname" .) (include "sternsoft.fullname" .) .Release.Namespace }}
-{{- else }}
-{{- printf "%s-mongodb" (include "sternsoft.fullname" .) }}
-{{- end }}
-{{- end }}
-
-{{/*
 Calculate mongodb url
 */}}
-{{- define "sternsoft.mongodb-url" }}
+{{- define "sternsoft.mongodb_url" }}
 {{- $mongodb := .Values.config.mongodb }}
 {{- if $mongodb.internal }}
-{{- printf "mongodb://%s-mongodb:27017/%s" (include "sternsoft.fullname" .) $mongodb.database }}
+{{- $credentials := (printf "%s:%s" $mongodb.username $mongodb.password) }}
+{{- printf "mongodbql://%s@%s-mongodb:27017/%s" $credentials (include "sternsoft.fullname" .) $mongodb.database }}
 {{- else }}
 {{- if $mongodb.url }}
 {{- printf $mongodb.url }}
 {{- else }}
-{{- $credentials := (empty $mongodb.username | ternary "" (printf "%s:%s@" $mongodb.username $mongodb.password)) }}
-{{- printf "mongodb://%s%s:%s/%s" $credentials $mongodb.host $mongodb.port $mongodb.database }}
+{{- printf "mongodbql://%s@%s:%s/%s" $credentials $mongodb.host $mongodb.port $mongodb.database }}
 {{- end }}
 {{- end }}
 {{- end }}
