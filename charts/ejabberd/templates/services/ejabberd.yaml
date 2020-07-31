@@ -18,22 +18,22 @@ spec:
   {{- end }}
   ports:
     - name: http
-      port: 80
+      port: {{ (and (eq .Values.service.ejabberd.type "LoadBalancer") (not (empty .Values.service.ejabberd.ports.http))) | ternary .Values.service.ejabberd.ports.http "80" }}
       targetPort: http
-      {{- if (and (eq .Values.service.ejabberd.type "NodePort") (not (empty .Values.service.ejabberd.nodePorts.http))) }}
-      nodePort: {{ .Values.service.ejabberd.nodePorts.http }}
+      {{- if (and (eq .Values.service.ejabberd.type "NodePort") (not (empty .Values.service.ejabberd.ports.http))) }}
+      nodePort: {{ .Values.service.ejabberd.ports.http }}
       {{- end }}
     - name: https
-      port: 443
+      port: {{ (and (eq .Values.service.ejabberd.type "LoadBalancer") (not (empty .Values.service.ejabberd.ports.https))) | ternary .Values.service.ejabberd.ports.https "443" }}
       targetPort: https
-      {{- if (and (eq .Values.service.ejabberd.type "NodePort") (not (empty .Values.service.ejabberd.nodePorts.http))) }}
-      nodePort: {{ .Values.service.ejabberd.nodePorts.http }}
+      {{- if (and (eq .Values.service.ejabberd.type "NodePort") (not (empty .Values.service.ejabberd.ports.http))) }}
+      nodePort: {{ .Values.service.ejabberd.ports.http }}
       {{- end }}
     - name: xmpp
-      port: 5222
+      port: {{ (and (eq .Values.service.ejabberd.type "LoadBalancer") (not (empty .Values.service.ejabberd.ports.xmpp))) | ternary .Values.service.ejabberd.ports.xmpp "5222" }}
       targetPort: xmpp
-      {{- if (and (eq .Values.service.ejabberd.type "NodePort") (not (empty .Values.service.ejabberd.nodePorts.xmpp))) }}
-      nodePort: {{ .Values.service.ejabberd.nodePorts.xmpp }}
+      {{- if (and (eq .Values.service.ejabberd.type "NodePort") (not (empty .Values.service.ejabberd.ports.xmpp))) }}
+      nodePort: {{ .Values.service.ejabberd.ports.xmpp }}
       {{- end }}
     # - name: s2s
     #   port: 5269
