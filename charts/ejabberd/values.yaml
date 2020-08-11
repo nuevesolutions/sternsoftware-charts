@@ -78,28 +78,29 @@ service:
   ejabberd:
     type: NodePort
     externalTrafficPolicy: Cluster
-    nodePorts:
+    ports:
       http: ''
+      https: ''
       xmpp: ''
   pgadmin:
     type: NodePort
     externalTrafficPolicy: Cluster
-    nodePorts:
+    ports:
       http: ''
   phpredisadmin:
     type: NodePort
     externalTrafficPolicy: Cluster
-    nodePorts:
+    ports:
       http: ''
   postgres:
     type: ClusterIP
     externalTrafficPolicy: Cluster
-    nodePorts:
+    ports:
       postgres: ''
   redis:
     type: ClusterIP
     externalTrafficPolicy: Cluster
-    nodePorts:
+    ports:
       redis: ''
 
 ingress:
@@ -107,7 +108,6 @@ ingress:
     certificate: ''
     enabled: false
     hostname: ''
-    path: /
     tls: false
     issuer:
       name: letsencrypt-staging
@@ -115,7 +115,6 @@ ingress:
     certificate: ''
     enabled: false
     hostname: ''
-    path: /
     tls: false
     issuer:
       name: letsencrypt-staging
@@ -123,7 +122,6 @@ ingress:
     certificate: ''
     enabled: false
     hostname: ''
-    path: /
     tls: false
     issuer:
       name: letsencrypt-staging

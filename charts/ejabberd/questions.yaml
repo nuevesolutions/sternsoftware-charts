@@ -548,12 +548,6 @@ questions:
         type: hostname
         required: true
         label: 'ejabberd ingress hostname'
-      - variable: ingress.ejabberd.path
-        default: /
-        description: ''
-        type: string
-        required: true
-        label: 'ejabberd ingress path'
       - variable: ingress.ejabberd.issuer.name
         default: letsencrypt-staging
         description: ''
@@ -586,7 +580,7 @@ questions:
     show_subquestion_if: NodePort
     group: 'Services and Load Balancing'
     subquestions:
-      - variable: service.ejabberd.nodePorts.http
+      - variable: service.ejabberd.ports.http
         default: ''
         description: ''
         type: int
@@ -594,7 +588,7 @@ questions:
         max: 32767
         show_if: ingress.ejabberd.enabled=false
         label: 'ejabberd http port'
-  - variable: service.ejabberd.nodePorts.xmpp
+  - variable: service.ejabberd.ports.xmpp
     default: ''
     description: ''
     type: int
@@ -626,13 +620,6 @@ questions:
         show_if: config.pgadmin.enabled=true&&config.postgres.internal=true
         required: true
         label: 'pgadmin ingress hostname'
-      - variable: ingress.pgadmin.path
-        default: /
-        description: ''
-        type: string
-        show_if: config.pgadmin.enabled=true&&config.postgres.internal=true
-        required: true
-        label: 'pgadmin ingress path'
       - variable: ingress.pgadmin.issuer.name
         default: letsencrypt-staging
         description: ''
@@ -665,7 +652,7 @@ questions:
     show_subquestion_if: NodePort
     group: 'Services and Load Balancing'
     subquestions:
-      - variable: service.pgadmin.nodePorts.http
+      - variable: service.pgadmin.ports.http
         default: ''
         description: ''
         type: int
@@ -673,7 +660,6 @@ questions:
         max: 32767
         show_if: ingress.pgadmin.enabled=false
         label: 'pgadmin port'
-
 
   - variable: ingress.phpredisadmin.enabled
     default: true
@@ -698,13 +684,6 @@ questions:
         show_if: config.phpredisadmin.enabled=true&&config.redis.internal=true
         required: true
         label: 'phpredisadmin ingress hostname'
-      - variable: ingress.phpredisadmin.path
-        default: /
-        description: ''
-        type: string
-        show_if: config.phpredisadmin.enabled=true&&config.redis.internal=true
-        required: true
-        label: 'phpredisadmin ingress path'
       - variable: ingress.phpredisadmin.issuer.name
         default: letsencrypt-staging
         description: ''
@@ -737,7 +716,7 @@ questions:
     show_subquestion_if: NodePort
     group: 'Services and Load Balancing'
     subquestions:
-      - variable: service.phpredisadmin.nodePorts.http
+      - variable: service.phpredisadmin.ports.http
         default: ''
         description: ''
         type: int
@@ -759,7 +738,7 @@ questions:
     show_subquestion_if: NodePort
     group: 'Services and Load Balancing'
     subquestions:
-      - variable: service.postgres.nodePorts.postgres
+      - variable: service.postgres.ports.postgres
         default: ''
         description: ''
         type: int
@@ -780,7 +759,7 @@ questions:
     show_subquestion_if: NodePort
     group: 'Services and Load Balancing'
     subquestions:
-      - variable: service.redis.nodePorts.redis
+      - variable: service.redis.ports.redis
         default: ''
         description: ''
         type: int
