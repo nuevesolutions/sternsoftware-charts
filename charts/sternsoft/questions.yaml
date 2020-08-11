@@ -799,6 +799,7 @@ questions:
     description: ''
     type: boolean
     label: 'api ingress enabled'
+    show_if: config.api.internal=true
     show_subquestion_if: true
     group: 'Services and Load Balancing'
     subquestions:
@@ -965,6 +966,7 @@ questions:
     type: string
     required: true
     label: 'api repository'
+    show_if: config.api.internal=true
     group: Images
   - variable: images.api.tag
     default: latest
@@ -972,6 +974,7 @@ questions:
     type: string
     required: true
     label: 'api tag'
+    show_if: config.api.internal=true
     group: Images
   - variable: images.mongoExpress.repository
     default: mongo-express
