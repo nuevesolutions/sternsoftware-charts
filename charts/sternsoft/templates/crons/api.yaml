@@ -1,0 +1,50 @@
+{{- if .Values.config.cronSchedule }}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ template "sternsoft.fullname" . }}-api
+  labels:
+    app: {{ template "sternsoft.name" . }}-api
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  schedule: {{ .Values.config.cronSchedule | quote }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          affinity:
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  preference:
+                    matchExpressions:
+                      - key: lifecycle
+                        operator: In
+                        values:
+                          - spot
+          containers:
+            - name: hello
+              image: curlimages/curl:7.71.1
+              command:
+                - sh
+                - -c
+                - |
+                  curl --request POST \
+                    --url ${BASE_URL}/api/base/training/lists/cronjob/duedate \
+                    --header 'authorization: Basic ${TOKEN}' \
+                    --header 'content-type: application/json'
+              env:
+                - name: TOKEN
+                  valueFrom:
+                    configMapKeyRef:
+                      name: {{ template "sternsoft.fullname" . }}
+                      key: cron_token
+                - name: BASE_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: {{ template "sternsoft.fullname" . }}
+                      key: api_base_url
+{{- end }}

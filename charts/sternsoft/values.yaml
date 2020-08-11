@@ -11,6 +11,8 @@ images:
 
 config:
   clusterProvider: aks
+  cronSchedule: "*/1 * * * *"
+  cronToken: ""
   imagePullPolicy: IfNotPresent
   updateStrategy: RollingUpdate
   admin:
@@ -18,8 +20,6 @@ config:
     hostname: ""
   api:
     internal: false
-    baseUrl: ""
-    hostname: ""
     appDescription: "CVTec Dashboard"
     appKeywords: "CVTec Dashboard"
     appTitle: "CVTec Dashboard"
@@ -27,6 +27,7 @@ config:
     azureInstrumentationKey: ""
     azureStorageAccessKey: ""
     azureStorageAccount: ""
+    baseUrl: ""
     clientKey: ""
     dbConfigUri: ""
     debug: ""
@@ -36,11 +37,11 @@ config:
     fileSaveLocation: ""
     firebaseConfig: ""
     firebaseDB: ""
+    hostname: ""
     mailDomain: ""
     mailFromWho: ""
     mailgunApiKey: ""
     maxVoteNumEveryDay: ""
-    port: "8900"
     sessionSecret: ""
     toolsClientKey: ""
     toolsDomain: ""
@@ -49,7 +50,6 @@ config:
     twilioPhoneNumber: ""
     websiteHttploggingRetentionDays: ""
     websitesEnableAppServiceStorage: ""
-    websitesPort: "8900"
   mongodb:
     customConfig: ""
     database: sternsoft

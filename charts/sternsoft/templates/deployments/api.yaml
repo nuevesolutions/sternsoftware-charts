@@ -43,6 +43,10 @@ spec:
             - name: container
               containerPort: 8900
           env:
+            - name: PORT
+              value: '8900'
+            - name: WEBSITES_PORT
+              value: '8900'
             - name: ADMIN_DOMAIN
               valueFrom:
                 configMapKeyRef:
@@ -158,11 +162,6 @@ spec:
                 configMapKeyRef:
                   name: {{ template "sternsoft.fullname" . }}
                   key: node_env
-            - name: PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ template "sternsoft.fullname" . }}
-                  key: port
             - name: SESSION_SECRET
               valueFrom:
                 secretKeyRef:
@@ -203,11 +202,6 @@ spec:
                 configMapKeyRef:
                   name: {{ template "sternsoft.fullname" . }}
                   key: websites_enable_app_service_storage
-            - name: WEBSITES_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ template "sternsoft.fullname" . }}
-                  key: websites_port
           livenessProbe:
             httpGet:
               path: /
