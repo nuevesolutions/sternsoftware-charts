@@ -11,7 +11,7 @@ images:
 
 config:
   clusterProvider: aks
-  cronSchedule: "*/1 * * * *"
+  cronSchedule: "0 0 * * *"
   cronToken: ""
   imagePullPolicy: IfNotPresent
   updateStrategy: RollingUpdate

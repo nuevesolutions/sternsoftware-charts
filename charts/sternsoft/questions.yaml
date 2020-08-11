@@ -36,7 +36,7 @@ questions:
     label: 'update strategy'
     group: Config
   - variable: config.cronSchedule
-    default: '*/1 * * * *'
+    default: '0 0 * * *'
     description: ''
     type: string
     required: false
