@@ -809,17 +809,19 @@ questions:
         type: boolean
         required: true
         label: 'api ingress tls'
+        show_if: config.api.internal=true
       - variable: ingress.api.hostname
         default: xip.io
         description: ''
         type: hostname
         required: true
         label: 'api ingress hostname'
+        show_if: config.api.internal=true
       - variable: ingress.api.issuer.name
         default: letsencrypt-staging
         description: ''
         type: enum
-        show_if: ingress.api.tls=true
+        show_if: ingress.api.tls=true&&config.api.internal=true
         options:
           - none
           - letsencrypt-staging
@@ -830,7 +832,7 @@ questions:
         default: ''
         description: ''
         type: string
-        show_if: ingress.api.tls=true&&ingress.api.issuer.name=none
+        show_if: ingress.api.tls=true&&ingress.api.issuer.name=none&&config.api.internal=true
         required: false
         label: 'api ingress certificate'
   - variable: service.api.type
