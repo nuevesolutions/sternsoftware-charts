@@ -10,11 +10,11 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   schedule: {{ .Values.config.cronSchedule | quote }}
-  backoffLimit: 1
   failedJobsHistoryLimit: 9
   successfulJobsHistoryLimit: 3
   jobTemplate:
     spec:
+      backoffLimit: 1
       template:
         spec:
           restartPolicy: OnFailure
