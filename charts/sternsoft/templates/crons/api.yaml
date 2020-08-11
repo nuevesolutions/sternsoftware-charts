@@ -11,7 +11,7 @@ metadata:
 spec:
   schedule: {{ .Values.config.cronSchedule | quote }}
   successfulJobsHistoryLimit: 3
-  # failedJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 9
   jobTemplate:
     spec:
       template:
