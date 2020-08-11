@@ -10,6 +10,8 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   schedule: {{ .Values.config.cronSchedule | quote }}
+  successfulJobsHistoryLimit: 3
+  # failedJobsHistoryLimit: 0
   jobTemplate:
     spec:
       template:
@@ -32,10 +34,10 @@ spec:
                 - sh
                 - -c
                 - |
-                  curl --request POST \
-                    --url ${BASE_URL}/api/base/training/lists/cronjob/duedate \
-                    --header 'authorization: Basic ${TOKEN}' \
-                    --header 'content-type: application/json'
+                  curl -f -XPOST \
+                    -H 'authorization: Basic ${TOKEN}' \
+                    -H 'content-type: application/json' \
+                    ${BASE_URL}/api/base/training/lists/cronjob/duedate
               env:
                 - name: TOKEN
                   valueFrom:
