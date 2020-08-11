@@ -41,14 +41,14 @@ questions:
     type: string
     required: false
     label: 'cron schedule'
-    group: 'API Config'
+    group: Config
   - variable: config.cronToken
     default: ''
     description: ''
     type: password
     required: false
     label: 'cron token'
-    group: 'API Config'
+    group: Config
 
 # API Config
   - variable: config.api.internal
