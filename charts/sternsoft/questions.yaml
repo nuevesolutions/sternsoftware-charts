@@ -64,6 +64,7 @@ questions:
     type: string
     required: false
     label: 'App Dashboard'
+    show_if: config.api.internal=true
     group: 'API Config'
   - variable: config.api.appDescription
     default: 'CVTec Dashboard'
@@ -71,6 +72,7 @@ questions:
     type: string
     required: false
     label: 'App Description'
+    show_if: config.api.internal=true
     group: 'API Config'
   - variable: config.api.appKeywords
     default: 'CVTec Dashboard'
@@ -78,6 +80,7 @@ questions:
     type: string
     required: false
     label: 'App Keywords'
+    show_if: config.api.internal=true
     group: 'API Config'
   - variable: config.api.baseUrl
     default: ''
@@ -86,12 +89,63 @@ questions:
     required: false
     label: 'api base url'
     group: 'API Config'
+  - variable: config.api.websiteHttploggingRetentionDays
+    default: '7'
+    description: ''
+    type: string
+    required: false
+    label: 'website http logging retention days'
+    show_if: config.api.internal=true
+    group: 'API Config'
+  - variable: config.api.websitesEnableAppServiceStorage
+    default: 'false'
+    description: ''
+    type: boolean
+    required: false
+    label: 'websites enable app service storage'
+    show_if: config.api.internal=true
+    group: 'API Config'
+  - variable: config.api.maxVoteNumEveryDay
+    default: '50'
+    description: ''
+    type: string
+    required: false
+    label: 'max vote num every day'
+    show_if: config.api.internal=true
+    group: 'API Config'
+  - variable: config.api.sessionSecret
+    default: ''
+    description: ''
+    type: password
+    required: false
+    label: 'session secret'
+    show_if: config.api.internal=true
+    group: 'API Config'
+  - variable: config.api.toolsClientKey
+    default: ''
+    description: ''
+    type: password
+    required: false
+    label: 'tools client key'
+    show_if: config.api.internal=true
+    group: 'API Config'
+  - variable: config.api.toolsDomain
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'tools domain'
+    show_if: config.api.internal=true
+    group: 'API Config'
+
+# Azure
   - variable: config.api.azureContainer
     default: 'admin-prod'
     description: ''
     type: string
     required: false
     label: 'azure container'
+    show_if: config.api.internal=true
     group: Azure
   - variable: config.api.azureInstrumentationKey
     default: ''
@@ -99,6 +153,7 @@ questions:
     type: password
     required: false
     label: 'azure instrumentation key'
+    show_if: config.api.internal=true
     group: Azure
   - variable: config.api.azureStorageAccessKey
     default: ''
@@ -106,6 +161,7 @@ questions:
     type: password
     required: false
     label: 'azure storage access key'
+    show_if: config.api.internal=true
     group: Azure
   - variable: config.api.azureStorageAccount
     default: 'cvtecprod'
@@ -113,6 +169,7 @@ questions:
     type: string
     required: false
     label: 'azure storage account'
+    show_if: config.api.internal=true
     group: Azure
   - variable: config.api.clientKey
     default: ''
@@ -120,13 +177,17 @@ questions:
     type: password
     required: false
     label: 'client key'
+    show_if: config.api.internal=true
     group: Azure
+
+# Docker
   - variable: config.api.dockerRegistryServerPassword
     default: ''
     description: ''
     type: password
     required: false
     label: 'docker registry server password'
+    show_if: config.api.internal=true
     group: Docker
   - variable: config.api.dockerRegistryServerUrl
     default: 'https://cvtecregistry.azurecr.io'
@@ -134,6 +195,7 @@ questions:
     type: string
     required: false
     label: 'docker registry server url'
+    show_if: config.api.internal=true
     group: Docker
   - variable: config.api.dockerRegistryServerUsername
     default: 'cvtecregistry'
@@ -141,13 +203,17 @@ questions:
     type: string
     required: false
     label: 'docker registry server username'
+    show_if: config.api.internal=true
     group: Docker
+
+# Firebase
   - variable: config.api.fileSaveLocation
     default: 'cloud'
     description: ''
     type: string
     required: false
     label: 'file save location'
+    show_if: config.api.internal=true
     group: Firebase
   - variable: config.api.firebaseConfig
     default: ''
@@ -155,6 +221,7 @@ questions:
     type: string
     required: false
     label: 'firebase config'
+    show_if: config.api.internal=true
     group: Firebase
   - variable: config.api.firebaseDB
     default: ''
@@ -162,19 +229,24 @@ questions:
     type: string
     required: false
     label: 'firebase DB'
+    show_if: config.api.internal=true
     group: Firebase
+
+# Mail
   - variable: config.api.mailDomain
     default: 'mail.winningfotos.com'
     description: ''
     type: string
     required: false
     label: 'mail domain'
+    show_if: config.api.internal=true
     group: Mail
   - variable: config.api.mailFromWho
     default: 'support<support@mail.testmailer.local>'
     description: ''
     type: string
     required: false
+    show_if: config.api.internal=true
     label: 'mail from who'
     group: Mail
   - variable: config.api.mailgunApiKey
@@ -183,41 +255,17 @@ questions:
     type: password
     required: false
     label: 'mailgun api key'
+    show_if: config.api.internal=true
     group: Mail
-  - variable: config.api.maxVoteNumEveryDay
-    default: '50'
-    description: ''
-    type: string
-    required: false
-    label: 'max vote num every day'
-    group: API config
-  - variable: config.api.sessionSecret
-    default: ''
-    description: ''
-    type: password
-    required: false
-    label: 'session secret'
-    group: API Config
-  - variable: config.api.toolsClientKey
-    default: ''
-    description: ''
-    type: password
-    required: false
-    label: 'tools client key'
-    group: API config
-  - variable: config.api.toolsDomain
-    default: ''
-    description: ''
-    type: string
-    required: false
-    label: 'tools domain'
-    group: API Config
+
+# Twilio
   - variable: config.api.twilio account sid
     default: ''
     description: ''
     type: string
     required: false
     label: 'twilio account sid'
+    show_if: config.api.internal=true
     group: Twilio
   - variable: config.api.twilioAuthToken
     default: ''
@@ -225,6 +273,7 @@ questions:
     type: password
     required: false
     label: 'twilio auth token'
+    show_if: config.api.internal=true
     group: Twilio
   - variable: config.api.twilioPhoneNumber
     default: ''
@@ -232,21 +281,8 @@ questions:
     type: string
     required: false
     label: 'twilio phone number'
+    show_if: config.api.internal=true
     group: Twilio
-  - variable: config.api.websiteHttploggingRetentionDays
-    default: '7'
-    description: ''
-    type: string
-    required: false
-    label: 'website http logging retention days'
-    group: API Config
-  - variable: config.api.websitesEnableAppServiceStorage
-    default: 'false'
-    description: ''
-    type: boolean
-    required: false
-    label: 'websites enable app service storage'
-    group: API Config
 
 # MongoDB Config
   - variable: config.mongodb.internal
