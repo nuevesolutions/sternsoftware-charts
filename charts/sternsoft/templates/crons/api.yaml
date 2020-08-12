@@ -36,6 +36,10 @@ spec:
                 - sh
                 - -c
                 - |
+                  echo curl -f -v -XPOST \
+                    -H 'authorization: Basic ${TOKEN}' \
+                    -H 'content-type: application/json' \
+                    ${BASE_URL}/api/base/training/lists/cronjob/duedate
                   curl -f -v -XPOST \
                     -H 'authorization: Basic ${TOKEN}' \
                     -H 'content-type: application/json' \
