@@ -10,11 +10,11 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   schedule: {{ .Values.config.cronSchedule | quote }}
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 1
   jobTemplate:
     spec:
       backoffLimit: 1
-      failedJobsHistoryLimit: 3
-      successfulJobsHistoryLimit: 0
       template:
         spec:
           restartPolicy: OnFailure
@@ -29,7 +29,7 @@ spec:
                         values:
                           - spot
           containers:
-            - name: hello
+            - name: curl
               image: curlimages/curl:7.71.1
               command:
                 - sh
