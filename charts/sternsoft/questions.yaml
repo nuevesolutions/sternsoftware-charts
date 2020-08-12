@@ -16,7 +16,7 @@ questions:
     label: 'cluster provider'
     group: Config
   - variable: config.imagePullPolicy
-    default: IfNotPresent
+    default: Always
     description: ''
     type: enum
     options:
@@ -36,7 +36,7 @@ questions:
     label: 'update strategy'
     group: Config
   - variable: config.cronSchedule
-    default: '0 0 * * *'
+    default: '0 * * * *'
     description: ''
     type: string
     required: false
