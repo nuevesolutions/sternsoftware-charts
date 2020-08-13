@@ -10,7 +10,7 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   schedule: {{ .Values.config.cronSchedule | quote }}
-  concurrencyPolicy: Allow
+  # concurrencyPolicy: Allow
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 1
   jobTemplate:
