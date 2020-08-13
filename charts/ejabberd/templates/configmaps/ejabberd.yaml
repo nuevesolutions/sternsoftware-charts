@@ -267,7 +267,7 @@ data:
         # -- AUTH
         # auth_method: anonymous
         auth_method: external
-        extauth_program: /scripts/auth/auth.sh
+        extauth_program: /scripts/auth.sh
         extauth_instances: 1
         auth_use_cache: false
         # --
