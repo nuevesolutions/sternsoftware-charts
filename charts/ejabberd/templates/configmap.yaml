@@ -33,4 +33,4 @@ data:
   {{- end }}
   auth_base_url: {{ .Values.config.ejabberd.authBaseUrl | quote }}
   debug: {{ .Values.config.debug | ternary "true" "false" | quote }}
-  test_users: {{ .Values.config.ejabberd.test_users | quote }}
+  test_users: {{ .Values.config.ejabberd.testUsers | quote }}
