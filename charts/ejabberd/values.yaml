@@ -1,7 +1,7 @@
 images:
   ejabberd:
-    repository: codejamninja/ejabberd
-    tag: 20.4.0
+    repository: cvtecregistry.azurecr.io/ejabberd-auth
+    tag: latest
   pgadmin:
     repository: dpage/pgadmin4
     tag: 4.11
@@ -78,29 +78,28 @@ service:
   ejabberd:
     type: NodePort
     externalTrafficPolicy: Cluster
-    ports:
+    nodePorts:
       http: ''
-      https: ''
       xmpp: ''
   pgadmin:
     type: NodePort
     externalTrafficPolicy: Cluster
-    ports:
+    nodePorts:
       http: ''
   phpredisadmin:
     type: NodePort
     externalTrafficPolicy: Cluster
-    ports:
+    nodePorts:
       http: ''
   postgres:
     type: ClusterIP
     externalTrafficPolicy: Cluster
-    ports:
+    nodePorts:
       postgres: ''
   redis:
     type: ClusterIP
     externalTrafficPolicy: Cluster
-    ports:
+    nodePorts:
       redis: ''
 
 ingress:
@@ -108,6 +107,7 @@ ingress:
     certificate: ''
     enabled: false
     hostname: ''
+    path: /
     tls: false
     issuer:
       name: letsencrypt-staging
@@ -115,6 +115,7 @@ ingress:
     certificate: ''
     enabled: false
     hostname: ''
+    path: /
     tls: false
     issuer:
       name: letsencrypt-staging
@@ -122,6 +123,7 @@ ingress:
     certificate: ''
     enabled: false
     hostname: ''
+    path: /
     tls: false
     issuer:
       name: letsencrypt-staging
