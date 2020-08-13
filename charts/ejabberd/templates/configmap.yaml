@@ -32,3 +32,4 @@ data:
   phpredisadmin_username: {{ .Values.config.phpredisadmin.username | quote }}
   {{- end }}
   api_base_url: {{ .Values.config.ejabberd.apiBaseUrl | quote }}
+  debug: {{ .Values.config.debug | ternary "true" "false" }}

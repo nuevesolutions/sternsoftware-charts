@@ -84,6 +84,11 @@ spec:
               readOnly: true
             {{- end }}
           env:
+            - name: EXTERNAL_AUTH_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "ejabberd.fullname" . }}
+                  key: debug
             - name: BASE_URL
               valueFrom:
                 configMapKeyRef:
