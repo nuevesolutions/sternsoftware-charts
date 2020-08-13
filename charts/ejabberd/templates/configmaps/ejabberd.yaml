@@ -264,7 +264,13 @@ data:
       {{- if .Values.config.ejabberd.jitsi.enabled }}
       meet.{{ template "ejabberd.ejabberd-hostname" . }}:
         s2s_access: none
-        auth_method: anonymous
+        # -- AUTH
+        # auth_method: anonymous
+        auth_method: external
+        extauth_program: /scripts/auth/auth.sh
+        extauth_instances: 1
+        auth_use_cache: false
+        # --
         allow_multiple_connections: true
         anonymous_protocol: both
         modules:
