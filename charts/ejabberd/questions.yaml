@@ -99,12 +99,19 @@ questions:
     required: true
     label: 'ejabberd read markers'
     group: Config
-  - variable: config.ejabberd.apiBaseUrl
+  - variable: config.ejabberd.authBaseUrl
     default: ''
     description: ''
     type: string
     required: false
-    label: 'api base url'
+    label: 'auth base url'
+    group: Config
+  - variable: config.ejabberd.testUsers
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'test users'
     group: Config
 
 # Postgres Config

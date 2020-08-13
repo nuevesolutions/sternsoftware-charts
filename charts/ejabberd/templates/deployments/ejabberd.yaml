@@ -89,11 +89,16 @@ spec:
                 configMapKeyRef:
                   name: {{ template "ejabberd.fullname" . }}
                   key: debug
+            - name: EXTERNAL_AUTH_TEST_USERS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "ejabberd.fullname" . }}
+                  key: test_users
             - name: BASE_URL
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "ejabberd.fullname" . }}
-                  key: api_base_url
+                  key: auth_base_url
           livenessProbe:
             tcpSocket:
               port: http

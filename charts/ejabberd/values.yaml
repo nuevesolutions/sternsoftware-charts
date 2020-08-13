@@ -15,13 +15,14 @@ config:
   imagePullPolicy: Always
   updateStrategy: RollingUpdate
   ejabberd:
-    apiBaseUrl: ''
+    authBaseUrl: ''
     baseUrl: ''
     captchaEnabled: false
     fail2ban: false
     hostname: ''
     readMarkers: false
     registerEnabled: true
+    testUsers: ''
     jitsi:
       enabled: false
       secret: ''
