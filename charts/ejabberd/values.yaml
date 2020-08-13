@@ -10,16 +10,16 @@ images:
     tag: v1.11.4
 
 config:
-  clusterProvider: infrastructure
+  clusterProvider: aks
   debug: false
-  imagePullPolicy: IfNotPresent
+  imagePullPolicy: Always
   updateStrategy: RollingUpdate
   ejabberd:
     baseUrl: ''
     captchaEnabled: false
     fail2ban: false
     hostname: ''
-    readMarkers: true
+    readMarkers: false
     registerEnabled: true
     jitsi:
       enabled: false

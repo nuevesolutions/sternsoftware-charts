@@ -4,7 +4,7 @@ questions:
 
 # Config
   - variable: config.clusterProvider
-    default: infrastructure
+    default: aks
     description: ''
     type: enum
     options:
@@ -23,7 +23,7 @@ questions:
     label: debug
     group: Config
   - variable: config.imagePullPolicy
-    default: IfNotPresent
+    default: Always
     description: ''
     type: enum
     options:
@@ -93,7 +93,7 @@ questions:
     label: 'ejabberd jitsi secret'
     group: Config
   - variable: config.ejabberd.readMarkers
-    default: true
+    default: false
     description: ''
     type: boolean
     required: true
