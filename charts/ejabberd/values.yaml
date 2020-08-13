@@ -15,6 +15,7 @@ config:
   imagePullPolicy: Always
   updateStrategy: RollingUpdate
   ejabberd:
+    apiBaseUrl: ''
     baseUrl: ''
     captchaEnabled: false
     fail2ban: false

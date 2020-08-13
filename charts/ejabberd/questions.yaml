@@ -99,6 +99,13 @@ questions:
     required: true
     label: 'ejabberd read markers'
     group: Config
+  - variable: config.ejabberd.apiBaseUrl
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'api base url'
+    group: Config
 
 # Postgres Config
   - variable: config.postgres.internal

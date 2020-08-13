@@ -83,7 +83,12 @@ spec:
               mountPath: /home/ejabberd/conf/certs/tls.key
               readOnly: true
             {{- end }}
-          env: []
+          env:
+            - name: BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: api_base_url
           livenessProbe:
             tcpSocket:
               port: http
