@@ -87,7 +87,7 @@ spec:
             - name: BASE_URL
               valueFrom:
                 configMapKeyRef:
-                  name: {{ template "sternsoft.fullname" . }}
+                  name: {{ template "ejabberd.fullname" . }}
                   key: api_base_url
           livenessProbe:
             tcpSocket:
