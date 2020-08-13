@@ -100,6 +100,12 @@ data:
             password: {{ .Values.config.ejabberd.jitsi.secret | quote }}
       {{- end }}
     s2s_use_starttls: optional
+    # -- AUTH
+    auth_method: external
+    extauth_program: /scripts/auth.sh
+    extauth_instances: 1
+    auth_use_cache: false
+    # --
     acl:
       local:
         user_regexp: ''
@@ -264,13 +270,7 @@ data:
       {{- if .Values.config.ejabberd.jitsi.enabled }}
       meet.{{ template "ejabberd.ejabberd-hostname" . }}:
         s2s_access: none
-        # -- AUTH
-        # auth_method: anonymous
-        auth_method: external
-        extauth_program: /scripts/auth.sh
-        extauth_instances: 1
-        auth_use_cache: false
-        # --
+        auth_method: anonymous
         allow_multiple_connections: true
         anonymous_protocol: both
         modules:
