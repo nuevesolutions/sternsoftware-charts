@@ -47,7 +47,7 @@ spec:
             - -c
             - |
               sh /scripts/setup.sh
-              exec /home/ejabberd/bin/ejabberdctl foreground
+              exec /usr/local/sbin/entrypoint foreground
           ports:
             - name: http
               containerPort: 5280
