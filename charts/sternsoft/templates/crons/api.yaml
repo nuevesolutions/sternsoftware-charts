@@ -36,10 +36,10 @@ spec:
                 - sh
                 - -c
                 - |
-                  curl -f -v \
+                  curl -v -d "" \
                     -H "authorization: Basic ${TOKEN}" \
                     -H "content-type: application/json" \
-                    ${BASE_URL}/api/base/training/lists/cronjob/duedate
+                    ${BASE_URL}/api/base/training/lists/cronjob/duedate_ || true
               env:
                 - name: TOKEN
                   valueFrom:
