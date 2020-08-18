@@ -43,28 +43,28 @@ questions:
     label: 'cron schedule'
     group: Config
   - variable: config.trainingarchiveCronSchedule
-    default: '0 * * * *'
+    default: '0 0 * * *'
     description: ''
     type: string
     required: false
     label: 'cron schedule'
     group: Config
   - variable: config.calenderreminderadvanceCronSchedule
-    default: '0 * * * *'
+    default: '* * * * *'
     description: ''
     type: string
     required: false
     label: 'cron schedule'
     group: Config
   - variable: config.alertpushCronSchedule
-    default: '0 * * * *'
+    default: '20 0 * * *'
     description: ''
     type: string
     required: false
     label: 'cron schedule'
     group: Config
   - variable: config.alertsarchiveCronSchedule
-    default: '0 * * * *'
+    default: '30 0 * * *'
     description: ''
     type: string
     required: false
