@@ -12,10 +12,10 @@ images:
 config:
   clusterProvider: aks
   trainingduedateCronSchedule: "0 * * * *"
-  trainingarchiveCronSchedule: "0 * * * *"
-  calenderreminderadvanceCronSchedule: "0 * * * *"
-  alertpushCronSchedule: "0 * * * *"
-  alertsarchiveCronSchedule: "0 * * * *"
+  trainingarchiveCronSchedule: "0 0 * * *"
+  calenderreminderadvanceCronSchedule: "* * * * *"
+  alertpushCronSchedule: "20 0 * * *"
+  alertsarchiveCronSchedule: "30 0 * * *"
   cronToken: ""
   imagePullPolicy: Always
   updateStrategy: RollingUpdate

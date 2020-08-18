@@ -39,7 +39,7 @@ spec:
                   curl -f -v -d "" \
                     -H "authorization: Basic ${TOKEN}" \
                     -H "content-type: application/json" \
-                    ${BASE_URL}/api/base/training/lists/cronjob/duedate
+                    ${BASE_URL}/api/base/alerts/cronjob/push
               env:
                 - name: TOKEN
                   valueFrom:
