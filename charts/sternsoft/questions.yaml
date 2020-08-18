@@ -35,7 +35,35 @@ questions:
     required: true
     label: 'update strategy'
     group: Config
-  - variable: config.cronSchedule
+  - variable: config.trainingduedateCronSchedule
+    default: '0 * * * *'
+    description: ''
+    type: string
+    required: false
+    label: 'cron schedule'
+    group: Config
+  - variable: config.trainingarchiveCronSchedule
+    default: '0 * * * *'
+    description: ''
+    type: string
+    required: false
+    label: 'cron schedule'
+    group: Config
+  - variable: config.calenderreminderadvanceCronSchedule
+    default: '0 * * * *'
+    description: ''
+    type: string
+    required: false
+    label: 'cron schedule'
+    group: Config
+  - variable: config.alertpushCronSchedule
+    default: '0 * * * *'
+    description: ''
+    type: string
+    required: false
+    label: 'cron schedule'
+    group: Config
+  - variable: config.alertsarchiveCronSchedule
     default: '0 * * * *'
     description: ''
     type: string
