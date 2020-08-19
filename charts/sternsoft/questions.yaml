@@ -47,28 +47,28 @@ questions:
     description: ''
     type: string
     required: false
-    label: 'training Duedate Cron Schedule'
+    label: 'training Archive Cron Schedule'
     group: Config
   - variable: config.calenderreminderadvanceCronSchedule
     default: '* * * * *'
     description: ''
     type: string
     required: false
-    label: 'training Duedate Cron Schedule'
+    label: 'calender Reminder Advance Cron Schedule'
     group: Config
   - variable: config.alertpushCronSchedule
     default: '20 0 * * *'
     description: ''
     type: string
     required: false
-    label: 'training Duedate Cron Schedule'
+    label: 'alertpush Cron Schedule'
     group: Config
   - variable: config.alertsarchiveCronSchedule
     default: '30 0 * * *'
     description: ''
     type: string
     required: false
-    label: 'training Duedate Cron Schedule'
+    label: 'alerts Archive Cron Schedule'
     group: Config
   - variable: config.cronToken
     default: ''
