@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "sternsoft.fullname" . }}-admin
+  name: {{ template "sternsoft.fullname" . }}-admin-fe
   labels:
-    app: {{ template "sternsoft.name" . }}-admin
+    app: {{ template "sternsoft.name" . }}-admin-fe
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
   selector:
     matchLabels:
-      app: {{ template "sternsoft.name" . }}-admin
+      app: {{ template "sternsoft.name" . }}-admin-fe
       release: {{ .Release.Name }}
   strategy:
     type: {{ .Values.config.updateStrategy }}
   template:
     metadata:
       labels:
-        app: {{ template "sternsoft.name" . }}-admin
+        app: {{ template "sternsoft.name" . }}-admin-fe
         release: {{ .Release.Name }}
       {{- if .Values.persistence.velero.enabled }}
       annotations:
@@ -35,8 +35,8 @@ spec:
                     values:
                       - spot
       containers:
-        - name: {{ template "sternsoft.fullname" . }}-admin
-          image: {{ .Values.images.admin.repository }}:{{ .Values.images.admin.tag }}
+        - name: {{ template "sternsoft.fullname" . }}-admin-fe
+          image: {{ .Values.images.adminFE.repository }}:{{ .Values.images.adminFE.tag }}
           imagePullPolicy: {{ .Values.config.imagePullPolicy }}
           ports:
             - name: container
@@ -46,7 +46,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "sternsoft.fullname" . }}
-                  key: api_base_url
+                  key: admin_api_base_url
           livenessProbe:
             httpGet:
               path: /

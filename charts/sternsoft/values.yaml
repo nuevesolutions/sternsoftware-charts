@@ -1,8 +1,8 @@
 images:
-  admin:
+  adminFE:
     repository: cvtecregistry.azurecr.io/ninet
     tag: 1.0.0
-  api:
+  adminApi:
     repository: nginx
     tag: latest
   mongoExpress:
@@ -19,10 +19,10 @@ config:
   cronToken: ''
   imagePullPolicy: Always
   updateStrategy: RollingUpdate
-  admin:
+  adminFE:
     baseUrl: ''
     hostname: ''
-  api:
+  adminApi:
     internal: false
     appDescription: 'CVTec Dashboard'
     appKeywords: 'CVTec Dashboard'
@@ -133,12 +133,12 @@ config:
     username: admin
 
 service:
-  admin:
+  adminFE:
     type: NodePort
     externalTrafficPolicy: Cluster
     ports:
       http: ''
-  api:
+  adminApi:
     type: NodePort
     externalTrafficPolicy: Cluster
     ports:
@@ -155,14 +155,14 @@ service:
       mongodb: ''
 
 ingress:
-  admin:
+  adminFE:
     certificate: ''
     enabled: false
     hostname: ''
     tls: false
     issuer:
       name: letsencrypt-staging
-  api:
+  adminApi:
     certificate: ''
     enabled: false
     hostname: ''

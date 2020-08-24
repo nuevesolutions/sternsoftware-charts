@@ -50,5 +50,5 @@ spec:
                   valueFrom:
                     configMapKeyRef:
                       name: {{ template "sternsoft.fullname" . }}
-                      key: api_base_url
+                      key: admin_api_base_url
 {{- end }}
