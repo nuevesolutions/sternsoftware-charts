@@ -1,15 +1,15 @@
-{{- if .Values.config.alertsarchiveCronSchedule }}
+{{- if .Values.config.alertsArchiveCronSchedule }}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ template "sternsoft.fullname" . }}-alertsArchive
+  name: {{ template "sternsoft.fullname" . }}-alerts-archive
   labels:
-    app: {{ template "sternsoft.name" . }}-alertsArchive
+    app: {{ template "sternsoft.name" . }}-alerts-archive
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  schedule: {{ .Values.config.alertsarchiveCronSchedule | quote }}
+  schedule: {{ .Values.config.alertsArchiveCronSchedule | quote }}
   concurrencyPolicy: Allow
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 1
