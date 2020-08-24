@@ -89,7 +89,7 @@ questions:
     label: internal
     group: 'Tools API Config'
   - variable: config.toolsApi.toolsAppTitle
-    default: 'CVTec Dashboard'
+    default: 'CVTec Tools'
     description: ''
     type: string
     required: false
@@ -97,7 +97,7 @@ questions:
     show_if: config.toolsApi.internal=true
     group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsAppDescription
-    default: 'CVTec Dashboard'
+    default: 'CVTec Tools'
     description: ''
     type: string
     required: false
@@ -105,7 +105,7 @@ questions:
     show_if: config.toolsApi.internal=true
     group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsAppKeywords
-    default: 'CVTec Dashboard'
+    default: 'CVTec Tools'
     description: ''
     type: string
     required: false
@@ -144,7 +144,7 @@ questions:
     show_if: config.toolsApi.internal=true
     group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsAzureContainer
-    default: 'admin-prod'
+    default: 'tools-prod'
     description: ''
     type: string
     required: false
@@ -152,7 +152,7 @@ questions:
     show_if: config.toolsApi.internal=true
     group: Azure
   - variable: config.toolsApi.toolsAzureInstrumentationKey
-    default: ''
+    default: '69825539-8d28-4df6-9d9d-065bd445c716'
     description: ''
     type: password
     required: false
@@ -176,7 +176,7 @@ questions:
     show_if: config.toolsApi.internal=true
     group: Azure
   - variable: config.toolsApi.toolsDockerCustomImageName
-    default: 'cvtecprod'
+    default: 'cvtecregistry.azurecr.io/tools:79'
     description: ''
     type: string
     required: false
@@ -184,7 +184,7 @@ questions:
     show_if: config.toolsApi.internal=true
     group: Azure
   - variable: config.toolsApi.toolsPm2PublicKey
-    default: 'cvtecprod'
+    default: 'bp6wdknvzammf98'
     description: ''
     type: string
     required: false
@@ -192,7 +192,7 @@ questions:
     show_if: config.toolsApi.internal=true
     group: Azure
   - variable: config.toolsApi.toolsPm2SecretKey
-    default: 'cvtecprod'
+    default: ''
     description: ''
     type: string
     required: false
@@ -232,7 +232,7 @@ questions:
     show_if: config.toolsApi.internal=true
     group: Firebase
   - variable: config.toolsApi.toolsSiteHost
-    default: 'cloud'
+    default: 'https://cvt-tools-prod.azurewebsites.net/'
     description: ''
     type: string
     required: false
