@@ -1,4 +1,4 @@
-{{- if .Values.config.calenderReminderCronSchedule }}
+{{- if .Values.config.calenderReminderAdvanceCronSchedule }}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
@@ -9,7 +9,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  schedule: {{ .Values.config.calenderReminderCronSchedule | quote }}
+  schedule: {{ .Values.config.calenderReminderAdvanceCronSchedule | quote }}
   concurrencyPolicy: Allow
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 1

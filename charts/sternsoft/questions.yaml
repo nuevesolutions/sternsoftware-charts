@@ -49,7 +49,7 @@ questions:
     required: false
     label: 'training archive cron schedule'
     group: Config
-  - variable: config.calenderReminderadvanceCronSchedule
+  - variable: config.calenderReminderAdvanceCronSchedule
     default: '* * * * *'
     description: ''
     type: string
