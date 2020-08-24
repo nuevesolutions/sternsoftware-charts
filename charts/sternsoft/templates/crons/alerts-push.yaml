@@ -1,15 +1,15 @@
-{{- if .Values.config.trainingarchiveCronSchedule }}
+{{- if .Values.config.alertsPushCronSchedule }}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ template "sternsoft.fullname" . }}-trainingarchive
+  name: {{ template "sternsoft.fullname" . }}-alerts-push
   labels:
-    app: {{ template "sternsoft.name" . }}-trainingarchive
+    app: {{ template "sternsoft.name" . }}-alerts-push
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  schedule: {{ .Values.config.trainingarchiveCronSchedule | quote }}
+  schedule: {{ .Values.config.alertsPushCronSchedule | quote }}
   concurrencyPolicy: Allow
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 1
@@ -39,7 +39,7 @@ spec:
                   curl -f -v -d "" \
                     -H "authorization: Basic ${TOKEN}" \
                     -H "content-type: application/json" \
-                    ${BASE_URL}/api/base/training/lists/cronjob/archive
+                    ${BASE_URL}/api/base/alerts/cronjob/push
               env:
                 - name: TOKEN
                   valueFrom:
@@ -50,5 +50,5 @@ spec:
                   valueFrom:
                     configMapKeyRef:
                       name: {{ template "sternsoft.fullname" . }}
-                      key: api_base_url
+                      key: admin_api_base_url
 {{- end }}

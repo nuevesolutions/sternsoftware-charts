@@ -1,15 +1,15 @@
-{{- if .Values.config.trainingduedateCronSchedule }}
+{{- if .Values.config.calenderReminderCronSchedule }}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ template "sternsoft.fullname" . }}-trainingduedate
+  name: {{ template "sternsoft.fullname" . }}-calender-reminder-advance
   labels:
-    app: {{ template "sternsoft.name" . }}-trainingduedate
+    app: {{ template "sternsoft.name" . }}-calender-reminder-advance
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  schedule: {{ .Values.config.trainingduedateCronSchedule | quote }}
+  schedule: {{ .Values.config.calenderReminderCronSchedule | quote }}
   concurrencyPolicy: Allow
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 1
@@ -39,7 +39,7 @@ spec:
                   curl -f -v -d "" \
                     -H "authorization: Basic ${TOKEN}" \
                     -H "content-type: application/json" \
-                    ${BASE_URL}/api/base/training/lists/cronjob/duedate
+                    ${BASE_URL}/api/base/calendar/events/cronjob/reminderAdvance
               env:
                 - name: TOKEN
                   valueFrom:
@@ -50,5 +50,5 @@ spec:
                   valueFrom:
                     configMapKeyRef:
                       name: {{ template "sternsoft.fullname" . }}
-                      key: api_base_url
+                      key: admin_api_base_url
 {{- end }}

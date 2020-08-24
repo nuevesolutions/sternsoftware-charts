@@ -1,41 +1,41 @@
-{{- if .Values.config.api.internal }}
-{{- if .Values.ingress.api.enabled }}
+{{- if .Values.config.adminApi.internal }}
+{{- if .Values.ingress.adminApi.enabled }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ template "sternsoft.fullname" . }}-api
+  name: {{ template "sternsoft.fullname" . }}-admin-api
   annotations:
     {{- if (eq .Values.config.clusterProvider "aks") }}
     kubernetes.io/ingress.class: addon-http-application-routing
     {{- else }}
     kubernetes.io/ingress.class: nginx
     {{- end }}
-    {{- if .Values.ingress.api.tls }}
-    {{- if (empty .Values.ingress.api.certificate) }}
-    cert-manager.io/cluster-issuer: {{ .Values.ingress.api.issuer.name }}
+    {{- if .Values.ingress.adminApi.tls }}
+    {{- if (empty .Values.ingress.adminApi.certificate) }}
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.adminApi.issuer.name }}
     kubernetes.io/tls-acme: 'true'
     {{- end }}
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
     {{- end }}
   labels:
-    app: {{ template "sternsoft.name" . }}-api
+    app: {{ template "sternsoft.name" . }}-admin-api
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
   rules:
-    - host: {{ .Values.ingress.api.hostname }}
+    - host: {{ .Values.ingress.adminApi.hostname }}
       http:
         paths:
           - path: /
             backend:
-              serviceName: {{ template "sternsoft.fullname" . }}-api
+              serviceName: {{ template "sternsoft.fullname" . }}-admin-api
               servicePort: http
-  {{- if .Values.ingress.api.tls }}
+  {{- if .Values.ingress.adminApi.tls }}
   tls:
-    - secretName: {{ template "sternsoft.api-certificate" . }}
+    - secretName: {{ template "sternsoft.adminApi-certificate" . }}
       hosts:
-        - {{ .Values.ingress.api.hostname }}
+        - {{ .Values.ingress.adminApi.hostname }}
   {{- end }}
 {{- end }}
 {{- end }}

@@ -1,24 +1,24 @@
-{{- if .Values.config.api.internal }}
+{{- if .Values.config.adminApi.internal }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "sternsoft.fullname" . }}-api
+  name: {{ template "sternsoft.fullname" . }}-admin-api
   labels:
-    app: {{ template "sternsoft.name" . }}-api
+    app: {{ template "sternsoft.name" . }}-admin-api
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
   selector:
     matchLabels:
-      app: {{ template "sternsoft.name" . }}-api
+      app: {{ template "sternsoft.name" . }}-admin-api
       release: {{ .Release.Name }}
   strategy:
     type: {{ .Values.config.updateStrategy }}
   template:
     metadata:
       labels:
-        app: {{ template "sternsoft.name" . }}-api
+        app: {{ template "sternsoft.name" . }}-admin-api
         release: {{ .Release.Name }}
       {{- if .Values.persistence.velero.enabled }}
       annotations:
@@ -36,8 +36,8 @@ spec:
                     values:
                       - spot
       containers:
-        - name: {{ template "sternsoft.fullname" . }}-api
-          image: {{ .Values.images.api.repository }}:{{ .Values.images.api.tag }}
+        - name: {{ template "sternsoft.fullname" . }}-admin-api
+          image: {{ .Values.images.adminApi.repository }}:{{ .Values.images.adminApi.tag }}
           imagePullPolicy: {{ .Values.config.imagePullPolicy }}
           ports:
             - name: container
@@ -47,11 +47,11 @@ spec:
               value: '8900'
             - name: WEBSITES_PORT
               value: '8900'
-            - name: ADMIN_DOMAIN
+            - name: ADMIN_FE_DOMAIN
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "sternsoft.fullname" . }}
-                  key: admin_domain
+                  key: admin_fe_domain
             - name: APP_DESCRIPTION
               valueFrom:
                 configMapKeyRef:

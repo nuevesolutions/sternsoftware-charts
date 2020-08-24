@@ -1,8 +1,8 @@
 images:
-  admin:
+  adminFE:
     repository: cvtecregistry.azurecr.io/ninet
     tag: 1.0.0
-  api:
+  adminApi:
     repository: nginx
     tag: latest
   toolsFe:
@@ -17,11 +17,11 @@ images:
 
 config:
   clusterProvider: aks
-  trainingduedateCronSchedule: "0 * * * *"
-  trainingarchiveCronSchedule: "0 0 * * *"
-  calenderreminderadvanceCronSchedule: "* * * * *"
-  alertpushCronSchedule: "20 0 * * *"
-  alertsarchiveCronSchedule: "30 0 * * *"
+  trainingDuedateCronSchedule: "0 * * * *"
+  trainingArchiveCronSchedule: "0 0 * * *"
+  calenderReminderadvanceCronSchedule: "* * * * *"
+  alertPushCronSchedule: "20 0 * * *"
+  alertsArchiveCronSchedule: "30 0 * * *"
   cronToken: ""
   imagePullPolicy: Always
   updateStrategy: RollingUpdate
@@ -32,10 +32,10 @@ config:
     internal: false
     baseUrl: ""
     hostname: ""
-  admin:
+  adminFE:
     baseUrl: ""
     hostname: ""
-  api:
+  adminApi:
     internal: false
     appDescription: "CVTec Dashboard"
     appKeywords: "CVTec Dashboard"
@@ -146,12 +146,12 @@ config:
     username: admin
 
 service:
-  admin:
+  adminFE:
     type: NodePort
     externalTrafficPolicy: Cluster
     ports:
       http: ""
-  api:
+  adminApi:
     type: NodePort
     externalTrafficPolicy: Cluster
     ports:
@@ -168,14 +168,14 @@ service:
       mongodb: ""
 
 ingress:
-  admin:
+  adminFE:
     certificate: ""
     enabled: false
     hostname: ""
     tls: false
     issuer:
       name: letsencrypt-staging
-  api:
+  adminApi:
     certificate: ""
     enabled: false
     hostname: ""

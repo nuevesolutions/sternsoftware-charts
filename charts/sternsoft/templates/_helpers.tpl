@@ -17,24 +17,24 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this
 {{- end }}
 
 {{/*
-Calculate admin certificate
+Calculate admin frontend certificate
 */}}
-{{- define "sternsoft.admin-certificate" }}
-{{- if (not (empty .Values.ingress.admin.certificate)) }}
-{{- printf .Values.ingress.admin.certificate }}
+{{- define "sternsoft.admin-fe-certificate" }}
+{{- if (not (empty .Values.ingress.adminFE.certificate)) }}
+{{- printf .Values.ingress.adminFE.certificate }}
 {{- else }}
-{{- printf "%s-admin-letsencrypt" (include "sternsoft.fullname" .) }}
+{{- printf "%s-adminFE-letsencrypt" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 
 {{/*
-Calculate api certificate
+Calculate admin api certificate
 */}}
-{{- define "sternsoft.api-certificate" }}
-{{- if (not (empty .Values.ingress.api.certificate)) }}
-{{- printf .Values.ingress.api.certificate }}
+{{- define "sternsoft.admin-api-certificate" }}
+{{- if (not (empty .Values.ingress.adminApi.certificate)) }}
+{{- printf .Values.ingress.adminApi.certificate }}
 {{- else }}
-{{- printf "%s-api-letsencrypt" (include "sternsoft.fullname" .) }}
+{{- printf "%s-adminApi-letsencrypt" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 
@@ -52,63 +52,63 @@ Calculate mongo express certificate
 {{/*
 Calculate admin hostname
 */}}
-{{- define "sternsoft.admin-hostname" }}
-{{- if (and .Values.config.admin.hostname (not (empty .Values.config.admin.hostname))) }}
-{{- printf .Values.config.admin.hostname }}
+{{- define "sternsoft.admin-fe-hostname" }}
+{{- if (and .Values.config.adminFE.hostname (not (empty .Values.config.adminFE.hostname))) }}
+{{- printf .Values.config.adminFE.hostname }}
 {{- else }}
-{{- if .Values.ingress.admin.enabled }}
-{{- printf .Values.ingress.admin.hostname }}
+{{- if .Values.ingress.adminFE.enabled }}
+{{- printf .Values.ingress.adminFE.hostname }}
 {{- else }}
-{{- printf "%s-admin" (include "sternsoft.fullname" .) }}
+{{- printf "%s-adminFE" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 {{- end }}
 
 {{/*
-Calculate admin base url
+Calculate admin frontend base url
 */}}
-{{- define "sternsoft.admin-base-url" }}
-{{- if (and .Values.config.admin.baseUrl (not (empty .Values.config.admin.baseUrl))) }}
-{{- printf .Values.config.admin.baseUrl }}
+{{- define "sternsoft.admin-fe-base-url" }}
+{{- if (and .Values.config.adminFE.baseUrl (not (empty .Values.config.adminFE.baseUrl))) }}
+{{- printf .Values.config.adminFE.baseUrl }}
 {{- else }}
-{{- if .Values.ingress.admin.enabled }}
-{{- $hostname := ((empty (include "sternsoft.admin-hostname" .)) | ternary .Values.ingress.admin.hostname (include "sternsoft.admin-hostname" .)) }}
-{{- $protocol := (.Values.ingress.admin.tls | ternary "https" "http") }}
+{{- if .Values.ingress.adminFE.enabled }}
+{{- $hostname := ((empty (include "sternsoft.admin-fe-hostname" .)) | ternary .Values.ingress.adminFE.hostname (include "sternsoft.admin-fe-hostname" .)) }}
+{{- $protocol := (.Values.ingress.adminFE.tls | ternary "https" "http") }}
 {{- printf "%s://%s" $protocol $hostname }}
 {{- else }}
-{{- printf "http://%s" (include "sternsoft.admin-hostname" .) }}
+{{- printf "http://%s" (include "sternsoft.admin-fe-hostname" .) }}
 {{- end }}
 {{- end }}
 {{- end }}
 
 {{/*
-Calculate api hostname
+Calculate admin api hostname
 */}}
-{{- define "sternsoft.api-hostname" }}
-{{- if (and .Values.config.api.hostname (not (empty .Values.config.api.hostname))) }}
-{{- printf .Values.config.api.hostname }}
+{{- define "sternsoft.admin-api-hostname" }}
+{{- if (and .Values.config.adminApi.hostname (not (empty .Values.config.adminApi.hostname))) }}
+{{- printf .Values.config.adminApi.hostname }}
 {{- else }}
-{{- if .Values.ingress.api.enabled }}
-{{- printf .Values.ingress.api.hostname }}
+{{- if .Values.ingress.adminApi.enabled }}
+{{- printf .Values.ingress.adminApi.hostname }}
 {{- else }}
-{{- printf "%s-api" (include "sternsoft.fullname" .) }}
+{{- printf "%s-adminApi" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 {{- end }}
 
 {{/*
-Calculate api base url
+Calculate admin api base url
 */}}
-{{- define "sternsoft.api-base-url" }}
-{{- if (and .Values.config.api.baseUrl (not (empty .Values.config.api.baseUrl))) }}
-{{- printf .Values.config.api.baseUrl }}
+{{- define "sternsoft.admin-api-base-url" }}
+{{- if (and .Values.config.adminApi.baseUrl (not (empty .Values.config.adminApi.baseUrl))) }}
+{{- printf .Values.config.adminApi.baseUrl }}
 {{- else }}
-{{- if .Values.ingress.api.enabled }}
-{{- $hostname := ((empty (include "sternsoft.api-hostname" .)) | ternary .Values.ingress.api.hostname (include "sternsoft.api-hostname" .)) }}
-{{- $protocol := (.Values.ingress.api.tls | ternary "https" "http") }}
+{{- if .Values.ingress.adminApi.enabled }}
+{{- $hostname := ((empty (include "sternsoft.admin-api-hostname" .)) | ternary .Values.ingress.adminApi.hostname (include "sternsoft.admin-api-hostname" .)) }}
+{{- $protocol := (.Values.ingress.adminApi.tls | ternary "https" "http") }}
 {{- printf "%s://%s" $protocol $hostname }}
 {{- else }}
-{{- printf "http://%s" (include "sternsoft.api-hostname" .) }}
+{{- printf "http://%s" (include "sternsoft.adminApi-hostname" .) }}
 {{- end }}
 {{- end }}
 {{- end }}

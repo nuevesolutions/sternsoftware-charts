@@ -35,40 +35,40 @@ questions:
     required: true
     label: 'update strategy'
     group: Config
-  - variable: config.trainingduedateCronSchedule
+  - variable: config.trainingDuedateCronSchedule
     default: '0 * * * *'
     description: ''
     type: string
     required: false
-    label: 'training Duedate Cron Schedule'
+    label: 'training duedate cron schedule'
     group: Config
-  - variable: config.trainingarchiveCronSchedule
+  - variable: config.trainingArchiveCronSchedule
     default: '0 0 * * *'
     description: ''
     type: string
     required: false
-    label: 'training Archive Cron Schedule'
+    label: 'training archive cron schedule'
     group: Config
-  - variable: config.calenderreminderadvanceCronSchedule
+  - variable: config.calenderReminderadvanceCronSchedule
     default: '* * * * *'
     description: ''
     type: string
     required: false
-    label: 'calender Reminder Advance Cron Schedule'
+    label: 'calender reminder advance cron schedule'
     group: Config
-  - variable: config.alertpushCronSchedule
+  - variable: config.alertPushCronSchedule
     default: '20 0 * * *'
     description: ''
     type: string
     required: false
-    label: 'alertpush Cron Schedule'
+    label: 'alert push cron schedule'
     group: Config
-  - variable: config.alertsarchiveCronSchedule
+  - variable: config.alertsArchiveCronSchedule
     default: '30 0 * * *'
     description: ''
     type: string
     required: false
-    label: 'alerts Archive Cron Schedule'
+    label: 'alerts archive cron schedule'
     group: Config
   - variable: config.cronToken
     default: ''
@@ -89,238 +89,238 @@ questions:
     label: internal
     group: 'Tools API Config'
 
-# API Config
-  - variable: config.api.internal
+# ADMIN API Config
+  - variable: config.adminApi.internal
     default: true
     description: ''
     type: boolean
     required: true
     label: internal
-    group: 'API Config'
-  - variable: config.api.appTitle
+    group: 'ADMIN API Config'
+  - variable: config.adminApi.appTitle
     default: 'CVTec Dashboard'
     description: ''
     type: string
     required: false
     label: 'App Dashboard'
-    show_if: config.api.internal=true
-    group: 'API Config'
-  - variable: config.api.appDescription
+    show_if: config.adminApi.internal=true
+    group: 'ADMIN API Config'
+  - variable: config.adminApi.appDescription
     default: 'CVTec Dashboard'
     description: ''
     type: string
     required: false
     label: 'App Description'
-    show_if: config.api.internal=true
-    group: 'API Config'
-  - variable: config.api.appKeywords
+    show_if: config.adminApi.internal=true
+    group: 'ADMIN API Config'
+  - variable: config.adminApi.appKeywords
     default: 'CVTec Dashboard'
     description: ''
     type: string
     required: false
     label: 'App Keywords'
-    show_if: config.api.internal=true
-    group: 'API Config'
-  - variable: config.api.baseUrl
+    show_if: config.adminApi.internal=true
+    group: 'ADMIN API Config'
+  - variable: config.adminApi.baseUrl
     default: ''
     description: ''
     type: string
     required: false
-    label: 'api base url'
-    group: 'API Config'
-  - variable: config.api.websiteHttploggingRetentionDays
+    label: 'admin api base url'
+    group: 'ADMIN API Config'
+  - variable: config.adminApi.websiteHttploggingRetentionDays
     default: '7'
     description: ''
     type: string
     required: false
     label: 'website http logging retention days'
-    show_if: config.api.internal=true
-    group: 'API Config'
-  - variable: config.api.websitesEnableAppServiceStorage
+    show_if: config.adminApi.internal=true
+    group: 'ADMIN API Config'
+  - variable: config.adminApi.websitesEnableAppServiceStorage
     default: 'false'
     description: ''
     type: boolean
     required: false
     label: 'websites enable app service storage'
-    show_if: config.api.internal=true
-    group: 'API Config'
-  - variable: config.api.maxVoteNumEveryDay
+    show_if: config.adminApi.internal=true
+    group: 'ADMIN API Config'
+  - variable: config.adminApi.maxVoteNumEveryDay
     default: '50'
     description: ''
     type: string
     required: false
     label: 'max vote num every day'
-    show_if: config.api.internal=true
-    group: 'API Config'
-  - variable: config.api.sessionSecret
+    show_if: config.adminApi.internal=true
+    group: 'ADMIN API Config'
+  - variable: config.adminApi.sessionSecret
     default: ''
     description: ''
     type: password
     required: false
     label: 'session secret'
-    show_if: config.api.internal=true
-    group: 'API Config'
-  - variable: config.api.toolsClientKey
+    show_if: config.adminApi.internal=true
+    group: 'ADMIN API Config'
+  - variable: config.adminApi.toolsClientKey
     default: ''
     description: ''
     type: password
     required: false
     label: 'tools client key'
-    show_if: config.api.internal=true
-    group: 'API Config'
-  - variable: config.api.toolsDomain
+    show_if: config.adminApi.internal=true
+    group: 'ADMIN API Config'
+  - variable: config.adminApi.toolsDomain
     default: ''
     description: ''
     type: string
     required: false
     label: 'tools domain'
-    show_if: config.api.internal=true
-    group: 'API Config'
+    show_if: config.adminApi.internal=true
+    group: 'ADMIN API Config'
 
 # Azure
-  - variable: config.api.azureContainer
+  - variable: config.adminApi.azureContainer
     default: 'admin-prod'
     description: ''
     type: string
     required: false
     label: 'azure container'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Azure
-  - variable: config.api.azureInstrumentationKey
+  - variable: config.adminApi.azureInstrumentationKey
     default: ''
     description: ''
     type: password
     required: false
     label: 'azure instrumentation key'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Azure
-  - variable: config.api.azureStorageAccessKey
+  - variable: config.adminApi.azureStorageAccessKey
     default: ''
     description: ''
     type: password
     required: false
     label: 'azure storage access key'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Azure
-  - variable: config.api.azureStorageAccount
+  - variable: config.adminApi.azureStorageAccount
     default: 'cvtecprod'
     description: ''
     type: string
     required: false
     label: 'azure storage account'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Azure
-  - variable: config.api.clientKey
+  - variable: config.adminApi.clientKey
     default: ''
     description: ''
     type: password
     required: false
     label: 'client key'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Azure
 
 # Docker
-  - variable: config.api.dockerRegistryServerPassword
+  - variable: config.adminApi.dockerRegistryServerPassword
     default: ''
     description: ''
     type: password
     required: false
     label: 'docker registry server password'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Docker
-  - variable: config.api.dockerRegistryServerUrl
+  - variable: config.adminApi.dockerRegistryServerUrl
     default: 'https://cvtecregistry.azurecr.io'
     description: ''
     type: string
     required: false
     label: 'docker registry server url'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Docker
-  - variable: config.api.dockerRegistryServerUsername
+  - variable: config.adminApi.dockerRegistryServerUsername
     default: 'cvtecregistry'
     description: ''
     type: string
     required: false
     label: 'docker registry server username'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Docker
 
 # Firebase
-  - variable: config.api.fileSaveLocation
+  - variable: config.adminApi.fileSaveLocation
     default: 'cloud'
     description: ''
     type: string
     required: false
     label: 'file save location'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Firebase
-  - variable: config.api.firebaseConfig
+  - variable: config.adminApi.firebaseConfig
     default: ''
     description: ''
     type: string
     required: false
     label: 'firebase config'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Firebase
-  - variable: config.api.firebaseDB
+  - variable: config.adminApi.firebaseDB
     default: ''
     description: ''
     type: string
     required: false
     label: 'firebase DB'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Firebase
 
 # Mail
-  - variable: config.api.mailDomain
+  - variable: config.adminApi.mailDomain
     default: 'mail.winningfotos.com'
     description: ''
     type: string
     required: false
     label: 'mail domain'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Mail
-  - variable: config.api.mailFromWho
+  - variable: config.adminApi.mailFromWho
     default: 'support<support@mail.testmailer.local>'
     description: ''
     type: string
     required: false
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     label: 'mail from who'
     group: Mail
-  - variable: config.api.mailgunApiKey
+  - variable: config.adminApi.mailgunApiKey
     default: ''
     description: ''
     type: password
     required: false
     label: 'mailgun api key'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Mail
 
 # Twilio
-  - variable: config.api.twilio account sid
+  - variable: config.adminApi.twilio account sid
     default: ''
     description: ''
     type: string
     required: false
     label: 'twilio account sid'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Twilio
-  - variable: config.api.twilioAuthToken
+  - variable: config.adminApi.twilioAuthToken
     default: ''
     description: ''
     type: password
     required: false
     label: 'twilio auth token'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Twilio
-  - variable: config.api.twilioPhoneNumber
+  - variable: config.adminApi.twilioPhoneNumber
     default: ''
     description: ''
     type: string
     required: false
     label: 'twilio phone number'
-    show_if: config.api.internal=true
+    show_if: config.adminApi.internal=true
     group: Twilio
 
 # MongoDB Config
@@ -774,126 +774,126 @@ questions:
         label: 'stash restore snapshot mongodb'
 
 # Services and Load Balancing
-  - variable: ingress.admin.enabled
+  - variable: ingress.adminFE.enabled
     default: true
     description: ''
     type: boolean
-    label: 'admin ingress enabled'
+    label: 'admin fe ingress enabled'
     show_subquestion_if: true
     group: 'Services and Load Balancing'
     subquestions:
-      - variable: ingress.admin.tls
+      - variable: ingress.adminFE.tls
         default: false
         description: ''
         type: boolean
         required: true
-        label: 'admin ingress tls'
-      - variable: ingress.admin.hostname
+        label: 'admin fe ingress tls'
+      - variable: ingress.adminFE.hostname
         default: xip.io
         description: ''
         type: hostname
         required: true
-        label: 'admin ingress hostname'
-      - variable: ingress.admin.issuer.name
+        label: 'admin fe ingress hostname'
+      - variable: ingress.adminFE.issuer.name
         default: letsencrypt-staging
         description: ''
         type: enum
-        show_if: ingress.admin.tls=true
+        show_if: ingress.adminFE.tls=true
         options:
           - none
           - letsencrypt-staging
           - letsencrypt-prod
         required: true
-        label: 'admin ingress issuer name'
-      - variable: ingress.admin.certificate
+        label: 'admin fe ingress issuer name'
+      - variable: ingress.adminFE.certificate
         default: ''
         description: ''
         type: string
-        show_if: ingress.admin.tls=true&&ingress.admin.issuer.name=none
+        show_if: ingress.adminFE.tls=true&&ingress.adminFE.issuer.name=none
         required: false
-        label: 'admin ingress certificate'
-  - variable: service.admin.type
+        label: 'admin fe ingress certificate'
+  - variable: service.adminFE.type
     default: NodePort
     description: ''
     type: enum
-    show_if: ingress.admin.enabled=false
+    show_if: ingress.adminFE.enabled=false
     options:
       - ClusterIP
       - NodePort
       - LoadBalancer
     required: true
-    label: 'admin service type'
+    label: 'admin fe service type'
     group: 'Services and Load Balancing'
-  - variable: service.admin.ports.http
+  - variable: service.adminFE.ports.http
     default: ''
     description: ''
     type: int
     min: 30000
     max: 32767
-    show_if: service.admin.type!=ClusterIP&&ingress.admin.enabled=false
-    label: 'admin http port'
+    show_if: service.adminFE.type!=ClusterIP&&ingress.adminFE.enabled=false
+    label: 'admin fe http port'
     group: 'Services and Load Balancing'
-  - variable: ingress.api.enabled
+  - variable: ingress.adminApi.enabled
     default: true
     description: ''
     type: boolean
-    label: 'api ingress enabled'
-    show_if: config.api.internal=true
+    label: 'admin api ingress enabled'
+    show_if: config.adminApi.internal=true
     show_subquestion_if: true
     group: 'Services and Load Balancing'
     subquestions:
-      - variable: ingress.api.tls
+      - variable: ingress.adminApi.tls
         default: false
         description: ''
         type: boolean
         required: true
-        label: 'api ingress tls'
-        show_if: config.api.internal=true
-      - variable: ingress.api.hostname
+        label: 'admin api ingress tls'
+        show_if: config.adminApi.internal=true
+      - variable: ingress.adminApi.hostname
         default: xip.io
         description: ''
         type: hostname
         required: true
-        label: 'api ingress hostname'
-        show_if: config.api.internal=true
-      - variable: ingress.api.issuer.name
+        label: 'admin api ingress hostname'
+        show_if: config.adminApi.internal=true
+      - variable: ingress.adminApi.issuer.name
         default: letsencrypt-staging
         description: ''
         type: enum
-        show_if: ingress.api.tls=true&&config.api.internal=true
+        show_if: ingress.adminApi.tls=true&&config.adminApi.internal=true
         options:
           - none
           - letsencrypt-staging
           - letsencrypt-prod
         required: true
-        label: 'api ingress issuer name'
-      - variable: ingress.api.certificate
+        label: 'admin api ingress issuer name'
+      - variable: ingress.adminApi.certificate
         default: ''
         description: ''
         type: string
-        show_if: ingress.api.tls=true&&ingress.api.issuer.name=none&&config.api.internal=true
+        show_if: ingress.adminApi.tls=true&&ingress.adminApi.issuer.name=none&&config.adminApi.internal=true
         required: false
-        label: 'api ingress certificate'
-  - variable: service.api.type
+        label: 'admin api ingress certificate'
+  - variable: service.adminApi.type
     default: NodePort
     description: ''
     type: enum
-    show_if: ingress.api.enabled=false
+    show_if: ingress.adminApi.enabled=false
     options:
       - ClusterIP
       - NodePort
       - LoadBalancer
     required: true
-    label: 'api service type'
+    label: 'admin api service type'
     group: 'Services and Load Balancing'
-  - variable: service.api.ports.http
+  - variable: service.adminApi.ports.http
     default: ''
     description: ''
     type: int
     min: 30000
     max: 32767
-    show_if: service.api.type!=ClusterIP&&ingress.api.enabled=false
-    label: 'api http port'
+    show_if: service.adminApi.type!=ClusterIP&&ingress.adminApi.enabled=false
+    label: 'admin api http port'
     group: 'Services and Load Balancing'
   - variable: ingress.mongoExpress.enabled
     default: true
@@ -987,35 +987,35 @@ questions:
     group: 'Services and Load Balancing'
 
 # Images
-  - variable: images.admin.repository
+  - variable: images.adminFE.repository
     default: cvtecregistry.azurecr.io/ninet
     description: ''
     type: string
     required: true
-    label: 'admin repository'
+    label: 'admin fe repository'
     group: Images
-  - variable: images.admin.tag
+  - variable: images.adminFE.tag
     default: 1.0.0
     description: ''
     type: string
     required: true
-    label: 'admin tag'
+    label: 'admin fe tag'
     group: Images
-  - variable: images.api.repository
+  - variable: images.adminApi.repository
     default: nginx
     description: ''
     type: string
     required: true
-    label: 'api repository'
-    show_if: config.api.internal=true
+    label: 'admin api repository'
+    show_if: config.adminApi.internal=true
     group: Images
-  - variable: images.api.tag
+  - variable: images.adminApi.tag
     default: latest
     description: ''
     type: string
     required: true
-    label: 'api tag'
-    show_if: config.api.internal=true
+    label: 'admin api tag'
+    show_if: config.adminApi.internal=true
     group: Images
   - variable: images.mongoExpress.repository
     default: mongo-express

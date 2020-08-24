@@ -23,26 +23,26 @@ data:
   {{- end }}
   tools_admin_domain: {{ template "sternsoft.toolsFe-base-url" . }}
   tools_api_base_url: {{ template "sternsoft.toolsApi-base-url" . }}
-  admin_domain: {{ template "sternsoft.admin-base-url" . }}
-  api_base_url: {{ template "sternsoft.api-base-url" . }}
-  app_description: {{ .Values.config.api.appDescription | quote  }}
-  app_keywords: {{ .Values.config.api.appKeyword | quote  }}
-  app_title: {{ .Values.config.api.appTitle | quote  }}
-  azure_container: {{ .Values.config.api.azureContainer | quote  }}
-  azure_storage_account: {{ .Values.config.api.azureStorageAccount | quote  }}
+  admin_fe_domain: {{ template "sternsoft.admin-fe-base-url" . }}
+  admin_api_base_url: {{ template "sternsoft.admin-api-base-url" . }}
+  app_description: {{ .Values.config.adminApi.appDescription | quote  }}
+  app_keywords: {{ .Values.config.adminApi.appKeyword | quote  }}
+  app_title: {{ .Values.config.adminApi.appTitle | quote  }}
+  azure_container: {{ .Values.config.adminApi.azureContainer | quote  }}
+  azure_storage_account: {{ .Values.config.adminApi.azureStorageAccount | quote  }}
   cron_token: {{ .Values.config.cronToken | quote }}
   debug: '*'
-  docker_registry_server_url: {{ .Values.config.api.dockerRegistryServerUrl | quote  }}
-  docker_registry_server_username: {{ .Values.config.api.dockerRegistryServerUsername | quote  }}
-  file_save_location: {{ .Values.config.api.fileSaveLocation | quote  }}
-  firebase_config: {{ .Values.config.api.firebaseConfig | quote  }}
-  firebase_db: {{ .Values.config.api.firebaseDB | quote  }}
-  mail_domain: {{ .Values.config.api.mailDomain | quote  }}
-  mail_from_who: {{ .Values.config.api.mailFromWho | quote }}
-  max_vote_num_every_day: {{ .Values.config.api.maxVoteNumEveryDay | quote }}
+  docker_registry_server_url: {{ .Values.config.adminApi.dockerRegistryServerUrl | quote  }}
+  docker_registry_server_username: {{ .Values.config.adminApi.dockerRegistryServerUsername | quote  }}
+  file_save_location: {{ .Values.config.adminApi.fileSaveLocation | quote  }}
+  firebase_config: {{ .Values.config.adminApi.firebaseConfig | quote  }}
+  firebase_db: {{ .Values.config.adminApi.firebaseDB | quote  }}
+  mail_domain: {{ .Values.config.adminApi.mailDomain | quote  }}
+  mail_from_who: {{ .Values.config.adminApi.mailFromWho | quote }}
+  max_vote_num_every_day: {{ .Values.config.adminApi.maxVoteNumEveryDay | quote }}
   node_env: 'production'
-  tools_domain: {{ .Values.config.api.toolsDomain | quote  }}
-  twilio_account_sid: {{ .Values.config.api.twilioAccountSid  | quote }}
-  twilio_phone_number: {{ .Values.config.api.twilioPhoneNumber  | quote }}
-  website_httplogging_retention_days:  {{ .Values.config.api.websiteHttploggingRetentionDays | quote  }}
-  websites_enable_app_service_storage:  {{ .Values.config.api.websitesEnableAppServiceStorage | quote  }}
+  tools_domain: {{ .Values.config.adminApi.toolsDomain | quote  }}
+  twilio_account_sid: {{ .Values.config.adminApi.twilioAccountSid  | quote }}
+  twilio_phone_number: {{ .Values.config.adminApi.twilioPhoneNumber  | quote }}
+  website_httplogging_retention_days:  {{ .Values.config.adminApi.websiteHttploggingRetentionDays | quote  }}
+  websites_enable_app_service_storage:  {{ .Values.config.adminApi.websitesEnableAppServiceStorage | quote  }}
