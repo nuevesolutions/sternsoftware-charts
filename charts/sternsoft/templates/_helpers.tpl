@@ -114,6 +114,38 @@ Calculate api base url
 {{- end }}
 
 {{/*
+Calculate tools api hostname
+*/}}
+{{- define "sternsoft.toolsApi-hostname" }}
+{{- if (and .Values.config.toolsApi.hostname (not (empty .Values.config.toolsApi.hostname))) }}
+{{- printf .Values.config.toolsApi.hostname }}
+{{- else }}
+{{- if .Values.ingress.toolsApi.enabled }}
+{{- printf .Values.ingress.toolsApi.hostname }}
+{{- else }}
+{{- printf "%s-toolsApi" (include "sternsoft.fullname" .) }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{/*
+Calculate tools api base url
+*/}}
+{{- define "sternsoft.toolsApi-base-url" }}
+{{- if (and .Values.config.toolsApi.baseUrl (not (empty .Values.config.toolsApi.baseUrl))) }}
+{{- printf .Values.config.toolsApi.baseUrl }}
+{{- else }}
+{{- if .Values.ingress.toolsApi.enabled }}
+{{- $hostname := ((empty (include "sternsoft.toolsApi-hostname" .)) | ternary .Values.ingress.toolsApi.hostname (include "sternsoft.api-hostname" .)) }}
+{{- $protocol := (.Values.ingress.toolsApi.tls | ternary "https" "http") }}
+{{- printf "%s://%s" $protocol $hostname }}
+{{- else }}
+{{- printf "http://%s" (include "sternsoft.toolsApi-hostname" .) }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{/*
 Calculate mongodb server
 */}}
 {{- define "sternsoft.mongodb-server" }}

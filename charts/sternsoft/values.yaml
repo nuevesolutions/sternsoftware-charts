@@ -5,6 +5,12 @@ images:
   api:
     repository: nginx
     tag: latest
+  toolsFe:
+    repository: cvtecregistry.azurecr.io/tools
+    tag: 1.0.0
+  toolsApi:
+    repository: nginx
+    tag: latest
   mongoExpress:
     repository: mongo-express
     tag: 0.49.0
@@ -19,6 +25,13 @@ config:
   cronToken: ""
   imagePullPolicy: Always
   updateStrategy: RollingUpdate
+  toolsFe:
+    baseUrl: ""
+    hostname: ""
+  toolsApi:
+    internal: false
+    baseUrl: ""
+    hostname: ""
   admin:
     baseUrl: ""
     hostname: ""

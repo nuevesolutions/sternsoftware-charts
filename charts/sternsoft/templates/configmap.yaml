@@ -21,6 +21,8 @@ data:
   mongo_express_username: {{ .Values.config.mongoExpress.username | quote }}
   mongodb_server: {{ template "sternsoft.mongodb-server" . }}
   {{- end }}
+  tools_admin_domain: {{ template "sternsoft.toolsFe-base-url" . }}
+  tools_api_base_url: {{ template "sternsoft.toolsApi-base-url" . }}
   admin_domain: {{ template "sternsoft.admin-base-url" . }}
   api_base_url: {{ template "sternsoft.api-base-url" . }}
   app_description: {{ .Values.config.api.appDescription | quote  }}

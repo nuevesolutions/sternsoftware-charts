@@ -78,6 +78,17 @@ questions:
     label: 'cron token'
     group: Config
 
+# Tools Admin Config
+
+# Tools API Config
+  - variable: config.toolsApi.internal
+    default: true
+    description: ''
+    type: boolean
+    required: true
+    label: internal
+    group: 'Tools API Config'
+
 # API Config
   - variable: config.api.internal
     default: true

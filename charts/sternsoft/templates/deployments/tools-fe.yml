@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "sternsoft.fullname" . }}-tools-fe
+  labels:
+    app: {{ template "sternsoft.name" . }}-tools-fe
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "sternsoft.name" . }}-tools-fe
+      release: {{ .Release.Name }}
+  strategy:
+    type: {{ .Values.config.updateStrategy }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "sternsoft.name" . }}-tools-fe
+        release: {{ .Release.Name }}
+      {{- if .Values.persistence.velero.enabled }}
+      annotations:
+        backup.velero.io/backup-volumes: data
+      {{- end }}
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: lifecycle
+                    operator: In
+                    values:
+                      - spot
+      containers:
+        - name: {{ template "sternsoft.fullname" . }}-tools-fe
+          image: {{ .Values.images.toolsFe.repository }}:{{ .Values.images.toolsFe.tag }}
+          imagePullPolicy: {{ .Values.config.imagePullPolicy }}
+          ports:
+            - name: container
+              containerPort: 3000
+          env:
+            - name: BACKEND_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: tools_api_base_url
+          livenessProbe:
+            httpGet:
+              path: /
+              port: container
+{{ toYaml .Values.probes.liveness | indent 12 }}
+          readinessProbe:
+            httpGet:
+              path: /
+              port: container
+{{ toYaml .Values.probes.readiness | indent 12 }}

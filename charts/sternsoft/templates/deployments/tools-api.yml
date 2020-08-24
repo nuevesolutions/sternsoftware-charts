@@ -1,0 +1,215 @@
+{{- if .Values.config.toolsApi.internal }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "sternsoft.fullname" . }}-tools-api
+  labels:
+    app: {{ template "sternsoft.name" . }}-tools-api
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "sternsoft.name" . }}-tools-api
+      release: {{ .Release.Name }}
+  strategy:
+    type: {{ .Values.config.updateStrategy }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "sternsoft.name" . }}-tools-api
+        release: {{ .Release.Name }}
+      {{- if .Values.persistence.velero.enabled }}
+      annotations:
+        backup.velero.io/backup-volumes: data
+      {{- end }}
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: lifecycle
+                    operator: In
+                    values:
+                      - spot
+      containers:
+        - name: {{ template "sternsoft.fullname" . }}-tools-api
+          image: {{ .Values.images.toolsApi.repository }}:{{ .Values.images.toolsApi.tag }}
+          imagePullPolicy: {{ .Values.config.imagePullPolicy }}
+          ports:
+            - name: container
+              containerPort: 8900
+          env:
+            - name: PORT
+              value: '8900'
+            - name: WEBSITES_PORT
+              value: '8900'
+            - name: ADMIN_DOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: tools_admin_domain
+            - name: APP_DESCRIPTION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: app_description
+            - name: APP_KEYWORDS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: app_keywords
+            - name: APP_TITLE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: app_title
+            - name: AZURE_CONTAINER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: azure_container
+            - name: AZURE_INSTRUMENTATION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: azure_instrumentation_key
+            - name: AZURE_STORAGE_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: azure_storage_access_key
+            - name: AZURE_STORAGE_ACCOUNT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: azure_storage_account
+            - name: CLIENT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: client_key
+            - name: DB_CONFIG_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: mongodb_url
+            - name: DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: debug
+            - name: DOCKER_REGISTRY_SERVER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: docker_registry_server_password
+            - name: DOCKER_REGISTRY_SERVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: docker_registry_server_url
+            - name: DOCKER_REGISTRY_SERVER_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: docker_registry_server_username
+            - name: FILE_SAVE_LOCATION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: file_save_location
+            - name: FIREBASE_CONFIG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: firebase_config
+            - name: FIREBASE_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: firebase_db
+            - name: MAIL_DOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: mail_domain
+            - name: MAIL_FROM_WHO
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: mail_from_who
+            - name: MAILGUN_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: mailgun_api_key
+            - name: MAX_VOTE_NUM_EVERY_DAY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: max_vote_num_every_day
+            - name: MAX_VOTE_NUM_EVERY_DAY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: max_vote_num_every_day
+            - name: NODE_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: node_env
+            - name: SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: session_secret
+            - name: TOOLS_CLIENT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: tools_client_key
+            - name: TOOLS_DOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: tools_domain
+            - name: TWILIO_ACCOUNT_SID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: twilio_account_sid
+            - name: TWILIO_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: twilio_auth_token
+            - name: TWILIO_PHONE_NUMBER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: twilio_phone_number
+            - name: WEBSITE_HTTPLOGGING_RETENTION_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: website_httplogging_retention_days
+            - name: WEBSITES_ENABLE_APP_SERVICE_STORAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "sternsoft.fullname" . }}
+                  key: websites_enable_app_service_storage
+          livenessProbe:
+            httpGet:
+              path: /
+              port: container
+{{ toYaml .Values.probes.liveness | indent 12 }}
+          readinessProbe:
+            httpGet:
+              path: /
+              port: container
+{{ toYaml .Values.probes.readiness | indent 12 }}
+{{- end }}
