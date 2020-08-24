@@ -88,6 +88,158 @@ questions:
     required: true
     label: internal
     group: 'Tools API Config'
+  - variable: config.toolsApi.toolsAppTitle
+    default: 'CVTec Dashboard'
+    description: ''
+    type: string
+    required: false
+    label: 'tools App Dashboard'
+    show_if: config.toolsApi.internal=true
+    group: 'TOOLS API Config'
+  - variable: config.toolsApi.toolsAppDescription
+    default: 'CVTec Dashboard'
+    description: ''
+    type: string
+    required: false
+    label: 'tools App Description'
+    show_if: config.toolsApi.internal=true
+    group: 'TOOLS API Config'
+  - variable: config.toolsApi.toolsAppKeywords
+    default: 'CVTec Dashboard'
+    description: ''
+    type: string
+    required: false
+    label: 'tools App Keywords'
+    show_if: config.toolsApi.internal=true
+    group: 'TOOLS API Config'
+  - variable: config.toolsApi.baseUrl
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'tools admin api base url'
+    group: 'TOOLS API Config'
+  - variable: config.toolsApi.toolsWebsiteHttploggingRetentionDays
+    default: '7'
+    description: ''
+    type: string
+    required: false
+    label: 'tools website http logging retention days'
+    show_if: config.toolsApi.internal=true
+    group: 'TOOLS API Config'
+  - variable: config.toolsApi.websitesEnableAppServiceStorage
+    default: 'false'
+    description: ''
+    type: boolean
+    required: false
+    label: 'tools websites enable app service storage'
+    show_if: config.toolsApi.internal=true
+    group: 'TOOLS API Config'
+  - variable: config.toolsApi.toolsDomain
+    default: ''
+    description: ''
+    type: string
+    required: false
+    label: 'tools domain'
+    show_if: config.toolsApi.internal=true
+    group: 'TOOLS API Config'
+    - variable: config.toolsApi.toolsAzureContainer
+    default: 'admin-prod'
+    description: ''
+    type: string
+    required: false
+    label: 'tools azure container'
+    show_if: config.toolsApi.internal=true
+    group: Azure
+  - variable: config.toolsApi.toolsAzureInstrumentationKey
+    default: ''
+    description: ''
+    type: password
+    required: false
+    label: 'tools azure instrumentation key'
+    show_if: config.toolsApi.internal=true
+    group: Azure
+  - variable: config.toolsApi.toolsAzureStorageAccessKey
+    default: ''
+    description: ''
+    type: password
+    required: false
+    label: 'tools azure storage access key'
+    show_if: config.toolsApi.internal=true
+    group: Azure
+  - variable: config.toolsApi.toolsAzureStorageAccount
+    default: 'cvtecprod'
+    description: ''
+    type: string
+    required: false
+    label: 'tools azure storage account'
+    show_if: config.toolsApi.internal=true
+    group: Azure
+  - variable: config.toolsApi.toolsDockerCustomImageName
+    default: 'cvtecprod'
+    description: ''
+    type: string
+    required: false
+    label: 'tools azure Custom Image name'
+    show_if: config.toolsApi.internal=true
+    group: Azure
+  - variable: config.toolsApi.toolsPm2PublicKey
+    default: 'cvtecprod'
+    description: ''
+    type: string
+    required: false
+    label: 'tools pm2 Public Key'
+    show_if: config.toolsApi.internal=true
+    group: Azure
+  - variable: config.toolsApi.toolsPm2SecretKey
+    default: 'cvtecprod'
+    description: ''
+    type: string
+    required: false
+    label: 'tools pm2 secret Key'
+    show_if: config.toolsApi.internal=true
+    group: Azure
+  - variable: config.toolsApi.toolsDockerRegistryServerPassword
+    default: ''
+    description: ''
+    type: password
+    required: false
+    label: 'tools docker registry server password'
+    show_if: config.toolsApi.internal=true
+    group: Docker
+  - variable: config.toolsApi.toolsDockerRegistryServerUrl
+    default: 'https://cvtecregistry.azurecr.io'
+    description: ''
+    type: string
+    required: false
+    label: 'tools docker registry server url'
+    show_if: config.toolsApi.internal=true
+    group: Docker
+  - variable: config.toolsApi.toolsDockerRegistryServerUsername
+    default: 'cvtecregistry'
+    description: ''
+    type: string
+    required: false
+    label: 'tools docker registry server username'
+    show_if: config.toolsApi.internal=true
+    group: Docker
+  - variable: config.toolsApi.toolsFileSaveLocation
+    default: 'cloud'
+    description: ''
+    type: string
+    required: false
+    label: 'file save location'
+    show_if: config.toolsApi.internal=true
+    group: Firebase
+  - variable: config.toolsApi.toolsSiteHost
+    default: 'cloud'
+    description: ''
+    type: string
+    required: false
+    label: 'tools site host'
+    show_if: config.toolsApi.internal=true
+    group: Azure
+  
 
 # ADMIN API Config
   - variable: config.adminApi.internal
