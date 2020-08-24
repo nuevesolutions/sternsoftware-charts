@@ -14,7 +14,7 @@ config:
   trainingDuedateCronSchedule: '0 * * * *'
   trainingArchiveCronSchedule: '0 0 * * *'
   calenderReminderAdvanceCronSchedule: '* * * * *'
-  alertPushCronSchedule: '20 0 * * *'
+  alertsPushCronSchedule: '20 0 * * *'
   alertsArchiveCronSchedule: '30 0 * * *'
   cronToken: ''
   imagePullPolicy: Always
