@@ -21,8 +21,6 @@ data:
   mongo_express_username: {{ .Values.config.mongoExpress.username | quote }}
   mongodb_server: {{ template "sternsoft.mongodb-server" . }}
   {{- end }}
-  tools_admin_domain: {{ template "sternsoft.toolsFe-base-url" . }}
-  tools_api_base_url: {{ template "sternsoft.toolsApi-base-url" . }}
   admin_fe_domain: {{ template "sternsoft.admin-fe-base-url" . }}
   admin_api_base_url: {{ template "sternsoft.admin-api-base-url" . }}
   app_description: {{ .Values.config.adminApi.appDescription | quote  }}
@@ -46,3 +44,20 @@ data:
   twilio_phone_number: {{ .Values.config.adminApi.twilioPhoneNumber  | quote }}
   website_httplogging_retention_days:  {{ .Values.config.adminApi.websiteHttploggingRetentionDays | quote  }}
   websites_enable_app_service_storage:  {{ .Values.config.adminApi.websitesEnableAppServiceStorage | quote  }}
+  tools_admin_domain: {{ template "sternsoft.toolsFe-base-url" . }}
+  tools_api_base_url: {{ template "sternsoft.toolsApi-base-url" . }}
+  tools_app_description: {{ .Values.config.toolsApi.toolsAppDescription | quote  }}
+  tools_app_keywords: {{ .Values.config.toolsApi.toolsAppKeyword | quote  }}
+  tools_app_title: {{ .Values.config.toolsApi.toolsAppTitle | quote  }}
+  tools_azure_container:  {{ .Values.config.toolsApi.toolsAzureContainer | quote  }}
+  tools_azure_storage_account: {{ .Values.config.toolsApi.toolsAzureStorageAccount | quote  }}
+  tools_debug: '*'
+  tools_docker_custom_image_name: {{ .Values.config.toolsApi.toolsDockerCustomImageName | quote  }}
+  tools_docker_registry_server_url: {{ .Values.config.toolsApi.toolsDockerRegistryServerUrl | quote  }}
+  tools_docker_registry_server_username: {{ .Values.config.toolsApi.toolsDockerRegistryServerUsername | quote  }}
+  tools_file_save_location: {{ .Values.config.toolsApi.toolsFileSaveLocation | quote  }}
+  tools_pm2_public_key: {{ .Values.config.toolsApi.toolsPm2PublicKey | quote  }}
+  tools_domain: {{ template "sternsoft.toolsFe-base-url" . }}
+  tools_site_host: {{ template "sternsoft.fullname" . }}-toolsApi
+  tools_website_httplogging_retention_days: {{ .Values.config.toolsApi.toolsWebsiteHttploggingRetentionDays | quote  }}
+  tools_websites_enable_app_service_storage: {{ .Values.config.toolsApi.toolsWebsitesEnableAppServiceStorage | quote  }}
