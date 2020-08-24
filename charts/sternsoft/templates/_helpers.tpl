@@ -28,6 +28,17 @@ Calculate admin frontend certificate
 {{- end }}
 
 {{/*
+Calculate tools frontend certificate
+*/}}
+{{- define "sternsoft.tools-fe-certificate" }}
+{{- if (not (empty .Values.ingress.toolsFe.certificate)) }}
+{{- printf .Values.ingress.toolsFe.certificate }}
+{{- else }}
+{{- printf "%s-toolsFe-letsencrypt" (include "sternsoft.fullname" .) }}
+{{- end }}
+{{- end }}
+
+{{/*
 Calculate admin api certificate
 */}}
 {{- define "sternsoft.admin-api-certificate" }}
@@ -35,6 +46,17 @@ Calculate admin api certificate
 {{- printf .Values.ingress.adminApi.certificate }}
 {{- else }}
 {{- printf "%s-adminApi-letsencrypt" (include "sternsoft.fullname" .) }}
+{{- end }}
+{{- end }}
+
+{{/*
+Calculate tools api certificate
+*/}}
+{{- define "sternsoft.tools-api-certificate" }}
+{{- if (not (empty .Values.ingress.toolsApi.certificate)) }}
+{{- printf .Values.ingress.toolsApi.certificate }}
+{{- else }}
+{{- printf "%s-toolsApi-letsencrypt" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 
@@ -141,6 +163,38 @@ Calculate tools api base url
 {{- printf "%s://%s" $protocol $hostname }}
 {{- else }}
 {{- printf "http://%s" (include "sternsoft.toolsApi-hostname" .) }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{/*
+Calculate tools hostname
+*/}}
+{{- define "sternsoft.tools-fe-hostname" }}
+{{- if (and .Values.config.toolsFe.hostname (not (empty .Values.config.toolsFe.hostname))) }}
+{{- printf .Values.config.toolsFe.hostname }}
+{{- else }}
+{{- if .Values.ingress.toolsFe.enabled }}
+{{- printf .Values.ingress.toolsFe.hostname }}
+{{- else }}
+{{- printf "%s-toolsFe" (include "sternsoft.fullname" .) }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{/*
+Calculate tools frontend base url
+*/}}
+{{- define "sternsoft.tools-fe-base-url" }}
+{{- if (and .Values.config.toolsFe.baseUrl (not (empty .Values.config.toolsFe.baseUrl))) }}
+{{- printf .Values.config.toolsFe.baseUrl }}
+{{- else }}
+{{- if .Values.ingress.toolsFe.enabled }}
+{{- $hostname := ((empty (include "sternsoft.tools-fe-hostname" .)) | ternary .Values.ingress.toolsFe.hostname (include "sternsoft.tools-fe-hostname" .)) }}
+{{- $protocol := (.Values.ingress.toolsFe.tls | ternary "https" "http") }}
+{{- printf "%s://%s" $protocol $hostname }}
+{{- else }}
+{{- printf "http://%s" (include "sternsoft.tools-fe-hostname" .) }}
 {{- end }}
 {{- end }}
 {{- end }}

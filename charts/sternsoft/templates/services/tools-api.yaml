@@ -1,0 +1,30 @@
+{{- if .Values.config.toolsApi.internal }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "sternsoft.fullname" . }}-admin-api
+  labels:
+    app: {{ template "sternsoft.name" . }}-admin-api
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  {{- if .Values.ingress.toolsApi.enabled }}
+  type: ClusterIP
+  {{- else }}
+  type: {{ .Values.service.toolsApi.type }}
+  {{- if (or (eq .Values.service.toolsApi.type "LoadBalancer") (eq .Values.service.toolsApi.type "NodePort")) }}
+  externalTrafficPolicy: {{ .Values.service.toolsApi.externalTrafficPolicy }}
+  {{- end }}
+  {{- end }}
+  ports:
+    - name: http
+      port: {{ (and (eq .Values.service.toolsApi.type "LoadBalancer") (not (empty .Values.service.toolsApi.ports.http))) | ternary .Values.service.api.ports.http "80" }}
+      targetPort: container
+      {{- if (and (eq .Values.service.toolsApi.type "NodePort") (not (empty .Values.service.toolsApi.ports.http))) }}
+      nodePort: {{ .Values.service.toolsApi.ports.http }}
+      {{- end }}
+  selector:
+    app: {{ template "sternsoft.name" . }}-admin-api
+    release: {{ .Release.Name }}
+{{- end }}

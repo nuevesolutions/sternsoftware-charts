@@ -143,7 +143,7 @@ questions:
     label: 'tools domain'
     show_if: config.toolsApi.internal=true
     group: 'TOOLS API Config'
-    - variable: config.toolsApi.toolsAzureContainer
+  - variable: config.toolsApi.toolsAzureContainer
     default: 'admin-prod'
     description: ''
     type: string
