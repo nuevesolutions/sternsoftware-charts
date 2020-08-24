@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "sternsoft.fullname" . }}-tools-fe
+  labels:
+    app: {{ template "sternsoft.name" . }}-tools-fe
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  {{- if .Values.ingress.toolsFe.enabled }}
+  type: ClusterIP
+  {{- else }}
+  type: {{ .Values.service.toolsFe.type }}
+  {{- if (or (eq .Values.service.toolsFe.type "LoadBalancer") (eq .Values.service.toolsFe.type "NodePort")) }}
+  externalTrafficPolicy: {{ .Values.service.toolsFe.externalTrafficPolicy }}
+  {{- end }}
+  {{- end }}
+  ports:
+    - name: http
+      port: {{ (and (eq .Values.service.toolsFe.type "LoadBalancer") (not (empty .Values.service.tools.ports.http))) | ternary .Values.service.tools.ports.http "80" }}
+      targetPort: container
+      {{- if (and (eq .Values.service.toolsFe.type "NodePort") (not (empty .Values.service.toolsFe.ports.http))) }}
+      nodePort: {{ .Values.service.toolsFe.ports.http }}
+      {{- end }}
+  selector:
+    app: {{ template "sternsoft.name" . }}-tools-fe
+    release: {{ .Release.Name }}
