@@ -36,7 +36,7 @@ spec:
                 - sh
                 - -c
                 - |
-                  curl -f -v -d "" \
+                  curl -v -d "" \
                     -H "authorization: Basic ${TOKEN}" \
                     -H "content-type: application/json" \
                     ${BASE_URL}/api/base/training/lists/cronjob/duedate
