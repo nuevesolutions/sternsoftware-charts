@@ -18,7 +18,7 @@ spec:
   {{- end }}
   ports:
     - name: http
-      port: {{ (and (eq .Values.service.adminFE.type "LoadBalancer") (not (empty .Values.service.admin.ports.http))) | ternary .Values.service.admin.ports.http "80" }}
+      port: {{ (and (eq .Values.service.adminFE.type "LoadBalancer") (not (empty .Values.service.adminFE.ports.http))) | ternary .Values.service.adminFE.ports.http "80" }}
       targetPort: container
       {{- if (and (eq .Values.service.adminFE.type "NodePort") (not (empty .Values.service.adminFE.ports.http))) }}
       nodePort: {{ .Values.service.adminFE.ports.http }}
