@@ -1291,7 +1291,7 @@ questions:
     show_if: config.adminApi.internal=true
     group: Images
   - variable: images.toolsFe.repository
-    default: cvtecregistry.azurecr.io/ninet
+    default: cvtecregistry.azurecr.io/tools
     description: ''
     type: string
     required: true

@@ -17,88 +17,88 @@ images:
 
 config:
   clusterProvider: aks
-  trainingDuedateCronSchedule: '0 * * * *'
-  trainingArchiveCronSchedule: '0 0 * * *'
-  calenderReminderadvanceCronSchedule: '* * * * *'
-  alertsPushCronSchedule: '20 0 * * *'
-  alertsArchiveCronSchedule: '30 0 * * *'
-  cronToken: ''
+  trainingDuedateCronSchedule: "0 * * * *"
+  trainingArchiveCronSchedule: "0 0 * * *"
+  calenderReminderadvanceCronSchedule: "* * * * *"
+  alertsPushCronSchedule: "20 0 * * *"
+  alertsArchiveCronSchedule: "30 0 * * *"
+  cronToken: ""
   imagePullPolicy: Always
   updateStrategy: RollingUpdate
   toolsFe:
-    baseUrl: ''
-    hostname: ''
+    baseUrl: ""
+    hostname: ""
   toolsApi:
     internal: false
-    baseUrl: ''
-    hostname: ''
-    toolsAppDescription: ''
-    toolsAppKeywords: ''
-    toolsAppTitle: ''
-    toolsAzureContainer: ''
-    toolsAzureInstrumentationKey: ''
-    toolsAzureStorageAccessKey: ''
-    toolsAzureStorageAccount: ''
-    toolsMongodbUrl: ''
-    toolsDebug: ''
-    toolsDockerCustomImageName: ''
-    toolsDockerRegistryServerPassword: ''
-    toolsDockerRegistryServerUrl: ''
-    toolsDockerRegistryServerUsername: ''
-    toolsFileSaveLocation: ''
-    toolsPm2PublicKey: ''
-    toolsPm2SecretKey: ''
-    toolsDomain: ''
-    toolsSiteHost: ''
-    toolsWebsiteHttploggingRetentionDays: ''
-    toolsWebsitesEnableAppServiceStorage: ''
+    baseUrl: ""
+    hostname: ""
+    toolsAppDescription: ""
+    toolsAppKeywords: ""
+    toolsAppTitle: ""
+    toolsAzureContainer: ""
+    toolsAzureInstrumentationKey: ""
+    toolsAzureStorageAccessKey: ""
+    toolsAzureStorageAccount: ""
+    toolsMongodbUrl: ""
+    toolsDebug: ""
+    toolsDockerCustomImageName: ""
+    toolsDockerRegistryServerPassword: ""
+    toolsDockerRegistryServerUrl: ""
+    toolsDockerRegistryServerUsername: ""
+    toolsFileSaveLocation: ""
+    toolsPm2PublicKey: ""
+    toolsPm2SecretKey: ""
+    toolsDomain: ""
+    toolsSiteHost: ""
+    toolsWebsiteHttploggingRetentionDays: ""
+    toolsWebsitesEnableAppServiceStorage: ""
   adminFE:
-    baseUrl: ''
-    hostname: ''
+    baseUrl: ""
+    hostname: ""
   adminApi:
     internal: false
-    appDescription: 'CVTec Dashboard'
-    appKeywords: 'CVTec Dashboard'
-    appTitle: 'CVTec Dashboard'
-    azureContainer: ''
-    azureInstrumentationKey: ''
-    azureStorageAccessKey: ''
-    azureStorageAccount: ''
-    baseUrl: ''
-    clientKey: ''
-    dbConfigUri: ''
-    debug: ''
-    dockerRegistryServerPassword: ''
-    dockerRegistryServerUrl: ''
-    dockerRegistryServerUsername: ''
-    fileSaveLocation: ''
-    firebaseConfig: ''
-    firebaseDB: ''
-    hostname: ''
-    mailDomain: ''
-    mailFromWho: ''
-    mailgunApiKey: ''
-    maxVoteNumEveryDay: ''
-    sessionSecret: ''
-    toolsClientKey: ''
-    toolsDomain: ''
-    twilioAccountSid: ''
-    twilioAuthToken: ''
-    twilioPhoneNumber: ''
-    websiteHttploggingRetentionDays: ''
-    websitesEnableAppServiceStorage: ''
+    appDescription: "CVTec Dashboard"
+    appKeywords: "CVTec Dashboard"
+    appTitle: "CVTec Dashboard"
+    azureContainer: ""
+    azureInstrumentationKey: ""
+    azureStorageAccessKey: ""
+    azureStorageAccount: ""
+    baseUrl: ""
+    clientKey: ""
+    dbConfigUri: ""
+    debug: ""
+    dockerRegistryServerPassword: ""
+    dockerRegistryServerUrl: ""
+    dockerRegistryServerUsername: ""
+    fileSaveLocation: ""
+    firebaseConfig: ""
+    firebaseDB: ""
+    hostname: ""
+    mailDomain: ""
+    mailFromWho: ""
+    mailgunApiKey: ""
+    maxVoteNumEveryDay: ""
+    sessionSecret: ""
+    toolsClientKey: ""
+    toolsDomain: ""
+    twilioAccountSid: ""
+    twilioAuthToken: ""
+    twilioPhoneNumber: ""
+    websiteHttploggingRetentionDays: ""
+    websitesEnableAppServiceStorage: ""
   mongodb:
-    customConfig: ''
+    customConfig: ""
     database: sternsoft
-    host: ''
+    host: ""
     internal: true
     password: P@ssw0rd
     pause: true
     port: 27017
     prometheus: false
     terminationPolicy: Delete
-    url: ''
-    username: ''
+    url: ""
+    username: ""
     version: 4.1.13
     resources:
       requests:
@@ -170,42 +170,52 @@ service:
     type: NodePort
     externalTrafficPolicy: Cluster
     ports:
-      http: ''
+      http: ""
   adminApi:
     type: NodePort
     externalTrafficPolicy: Cluster
     ports:
-      http: ''
+      http: ""
+  toolsFe:
+    type: NodePort
+    externalTrafficPolicy: Cluster
+    ports:
+      http: ""
+  toolsApi:
+    type: NodePort
+    externalTrafficPolicy: Cluster
+    ports:
+      http: ""
   mongoExpress:
     type: NodePort
     externalTrafficPolicy: Cluster
     ports:
-      http: ''
+      http: ""
   mongodb:
     type: ClusterIP
     externalTrafficPolicy: Cluster
     ports:
-      mongodb: ''
+      mongodb: ""
 
 ingress:
   adminFE:
-    certificate: ''
+    certificate: ""
     enabled: false
-    hostname: ''
+    hostname: ""
     tls: false
     issuer:
       name: letsencrypt-staging
   adminApi:
-    certificate: ''
+    certificate: ""
     enabled: false
-    hostname: ''
+    hostname: ""
     tls: false
     issuer:
       name: letsencrypt-staging
   mongoExpress:
-    certificate: ''
+    certificate: ""
     enabled: false
-    hostname: ''
+    hostname: ""
     tls: false
     issuer:
       name: letsencrypt-staging
@@ -213,25 +223,25 @@ ingress:
 persistence:
   accessMode: ReadWriteOnce
   enabled: false
-  existingClaim: ''
+  existingClaim: ""
   size: 1Gi
-  storageClass: ''
+  storageClass: ""
   velero:
     enabled: false
   stash:
-    bucket: ''
-    container: ''
+    bucket: ""
+    container: ""
     enabled: false
     endpoint: s3.amazonaws.com
     keepLast: 30
     paused: false
     prefix: stash
-    schedule: '0 0 * * *'
+    schedule: "0 0 * * *"
     secret: stash-config-stash-config
     type: s3
     restore:
       snapshot:
-        mongodb: ''
+        mongodb: ""
 
 probes:
   liveness:
