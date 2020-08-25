@@ -2,9 +2,9 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ template "sternsoft.fullname" . }}-calender-reminder-advance
+  name: {{ template "sternsoft.fullname" . }}-calender-reminder
   labels:
-    app: {{ template "sternsoft.name" . }}-calender-reminder-advance
+    app: {{ template "sternsoft.name" . }}-calender-reminder
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}

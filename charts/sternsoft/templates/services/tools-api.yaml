@@ -19,7 +19,7 @@ spec:
   {{- end }}
   ports:
     - name: http
-      port: {{ (and (eq .Values.service.toolsApi.type "LoadBalancer") (not (empty .Values.service.toolsApi.ports.http))) | ternary .Values.service.api.ports.http "80" }}
+      port: {{ (and (eq .Values.service.toolsApi.type "LoadBalancer") (not (empty .Values.service.toolsApi.ports.http))) | ternary .Values.service.toolsApi.ports.http "80" }}
       targetPort: container
       {{- if (and (eq .Values.service.toolsApi.type "NodePort") (not (empty .Values.service.toolsApi.ports.http))) }}
       nodePort: {{ .Values.service.toolsApi.ports.http }}
