@@ -13,7 +13,7 @@ config:
   clusterProvider: aks
   trainingDuedateCronSchedule: '0 * * * *'
   trainingArchiveCronSchedule: '0 0 * * *'
-  calenderReminderAdvanceCronSchedule: '* * * * *'
+  calenderReminderCronSchedule: '* * * * *'
   alertsPushCronSchedule: '20 0 * * *'
   alertsArchiveCronSchedule: '30 0 * * *'
   cronToken: ''
