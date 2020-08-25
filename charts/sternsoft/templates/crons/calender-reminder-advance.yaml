@@ -36,7 +36,7 @@ spec:
                 - sh
                 - -c
                 - |
-                  curl -v -d "" \
+                  curl -f -v -d "" \
                     -H "authorization: Basic ${TOKEN}" \
                     -H "content-type: application/json" \
                     ${BASE_URL}/api/base/calendar/events/cronjob/reminderAdvance
