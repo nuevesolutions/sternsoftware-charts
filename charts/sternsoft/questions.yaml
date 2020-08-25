@@ -150,7 +150,7 @@ questions:
     required: false
     label: 'tools azure container'
     show_if: config.toolsApi.internal=true
-    group: Azure
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsAzureInstrumentationKey
     default: '69825539-8d28-4df6-9d9d-065bd445c716'
     description: ''
@@ -158,7 +158,7 @@ questions:
     required: false
     label: 'tools azure instrumentation key'
     show_if: config.toolsApi.internal=true
-    group: Azure
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsAzureStorageAccessKey
     default: ''
     description: ''
@@ -166,7 +166,7 @@ questions:
     required: false
     label: 'tools azure storage access key'
     show_if: config.toolsApi.internal=true
-    group: Azure
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsAzureStorageAccount
     default: 'cvtecprod'
     description: ''
@@ -174,15 +174,15 @@ questions:
     required: false
     label: 'tools azure storage account'
     show_if: config.toolsApi.internal=true
-    group: Azure
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsDockerCustomImageName
-    default: 'cvtecregistry.azurecr.io/tools:79'
+    default: 'cvtecregistry.azurecr.io/tools-api:latest'
     description: ''
     type: string
     required: false
     label: 'tools azure Custom Image name'
     show_if: config.toolsApi.internal=true
-    group: Azure
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsPm2PublicKey
     default: 'bp6wdknvzammf98'
     description: ''
@@ -190,7 +190,7 @@ questions:
     required: false
     label: 'tools pm2 Public Key'
     show_if: config.toolsApi.internal=true
-    group: Azure
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsPm2SecretKey
     default: ''
     description: ''
@@ -198,7 +198,7 @@ questions:
     required: false
     label: 'tools pm2 secret Key'
     show_if: config.toolsApi.internal=true
-    group: Azure
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsDockerRegistryServerPassword
     default: ''
     description: ''
@@ -206,7 +206,7 @@ questions:
     required: false
     label: 'tools docker registry server password'
     show_if: config.toolsApi.internal=true
-    group: Docker
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsDockerRegistryServerUrl
     default: 'https://cvtecregistry.azurecr.io'
     description: ''
@@ -214,7 +214,7 @@ questions:
     required: false
     label: 'tools docker registry server url'
     show_if: config.toolsApi.internal=true
-    group: Docker
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsDockerRegistryServerUsername
     default: 'cvtecregistry'
     description: ''
@@ -222,7 +222,7 @@ questions:
     required: false
     label: 'tools docker registry server username'
     show_if: config.toolsApi.internal=true
-    group: Docker
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsFileSaveLocation
     default: 'cloud'
     description: ''
@@ -230,7 +230,7 @@ questions:
     required: false
     label: 'file save location'
     show_if: config.toolsApi.internal=true
-    group: Firebase
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsSiteHost
     default: 'https://cvt-tools-prod.azurewebsites.net/'
     description: ''
@@ -238,7 +238,7 @@ questions:
     required: false
     label: 'tools site host'
     show_if: config.toolsApi.internal=true
-    group: Azure
+    group: 'TOOLS API Config'
   
 
 # ADMIN API Config
@@ -1261,21 +1261,21 @@ questions:
 
 # Images
   - variable: images.adminFE.repository
-    default: cvtecregistry.azurecr.io/ninet
+    default: cvtecregistry.azurecr.io/admin-fe
     description: ''
     type: string
     required: true
     label: 'admin fe repository'
     group: Images
   - variable: images.adminFE.tag
-    default: 1.0.0
+    default: latest
     description: ''
     type: string
     required: true
     label: 'admin fe tag'
     group: Images
   - variable: images.adminApi.repository
-    default: nginx
+    default: cvtecregistry.azurecr.io/admin-api
     description: ''
     type: string
     required: true
@@ -1291,21 +1291,21 @@ questions:
     show_if: config.adminApi.internal=true
     group: Images
   - variable: images.toolsFe.repository
-    default: cvtecregistry.azurecr.io/tools
+    default: cvtecregistry.azurecr.io/tools-fe
     description: ''
     type: string
     required: true
     label: 'tools fe repository'
     group: Images
   - variable: images.toolsFe.tag
-    default: 1.0.0
+    default: latest
     description: ''
     type: string
     required: true
     label: 'tools fe tag'
     group: Images
   - variable: images.toolsApi.repository
-    default: nginx
+    default: cvtecregistry.azurecr.io/tools-api
     description: ''
     type: string
     required: true
