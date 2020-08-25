@@ -158,7 +158,7 @@ Calculate tools api base url
 {{- printf .Values.config.toolsApi.baseUrl }}
 {{- else }}
 {{- if .Values.ingress.toolsApi.enabled }}
-{{- $hostname := ((empty (include "sternsoft.toolsApi-hostname" .)) | ternary .Values.ingress.toolsApi.hostname (include "sternsoft.api-hostname" .)) }}
+{{- $hostname := ((empty (include "sternsoft.toolsApi-hostname" .)) | ternary .Values.ingress.toolsApi.hostname (include "sternsoft.toolsApi-hostname" .)) }}
 {{- $protocol := (.Values.ingress.toolsApi.tls | ternary "https" "http") }}
 {{- printf "%s://%s" $protocol $hostname }}
 {{- else }}
