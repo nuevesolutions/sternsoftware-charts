@@ -34,7 +34,7 @@ Calculate tools frontend certificate
 {{- if (not (empty .Values.ingress.toolsFe.certificate)) }}
 {{- printf .Values.ingress.toolsFe.certificate }}
 {{- else }}
-{{- printf "%s-toolsFe-letsencrypt" (include "sternsoft.fullname" .) }}
+{{- printf "%s-tools-fe-letsencrypt" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 
