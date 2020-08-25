@@ -130,7 +130,7 @@ Calculate admin api base url
 {{- $protocol := (.Values.ingress.adminApi.tls | ternary "https" "http") }}
 {{- printf "%s://%s" $protocol $hostname }}
 {{- else }}
-{{- printf "http://%s" (include "sternsoft.adminApi-hostname" .) }}
+{{- printf "http://%s" (include "sternsoft.admin-api-hostname" .) }}
 {{- end }}
 {{- end }}
 {{- end }}
