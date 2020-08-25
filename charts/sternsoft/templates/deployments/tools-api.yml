@@ -124,7 +124,7 @@ spec:
                   key: tools_pm2_public_key
             - name: PM2_SECRET_KEY
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   name: {{ template "sternsoft.fullname" . }}
                   key: tools_pm2_secret_key
             - name: TOOLS_DOMAIN
