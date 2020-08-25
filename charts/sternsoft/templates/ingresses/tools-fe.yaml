@@ -2,7 +2,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ template "sternsoft.fullname" . }}-admin-fe
+  name: {{ template "sternsoft.fullname" . }}-tools-fe
   annotations:
     {{- if (eq .Values.config.clusterProvider "aks") }}
     kubernetes.io/ingress.class: addon-http-application-routing
@@ -17,7 +17,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
     {{- end }}
   labels:
-    app: {{ template "sternsoft.name" . }}-admin-fe
+    app: {{ template "sternsoft.name" . }}-tools-fe
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -28,7 +28,7 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: {{ template "sternsoft.fullname" . }}-admin-fe
+              serviceName: {{ template "sternsoft.fullname" . }}-tools-fe
               servicePort: http
   {{- if .Values.ingress.toolsFe.tls }}
   tls:
