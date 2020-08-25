@@ -87,7 +87,7 @@ questions:
     type: boolean
     required: true
     label: internal
-    group: 'Tools API Config'
+    group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsAppTitle
     default: 'CVTec Tools'
     description: ''
