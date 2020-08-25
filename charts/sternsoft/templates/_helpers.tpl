@@ -23,7 +23,7 @@ Calculate admin frontend certificate
 {{- if (not (empty .Values.ingress.adminFE.certificate)) }}
 {{- printf .Values.ingress.adminFE.certificate }}
 {{- else }}
-{{- printf "%s-adminFE-letsencrypt" (include "sternsoft.fullname" .) }}
+{{- printf "%s-admin-fe-letsencrypt" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 
