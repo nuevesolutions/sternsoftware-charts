@@ -19,7 +19,7 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this
 {{/*
 Calculate admin frontend certificate
 */}}
-{{- define "sternsoft.admin-fe-certificate" }}
+{{- define "sternsoft.adminFE-certificate" }}
 {{- if (not (empty .Values.ingress.adminFE.certificate)) }}
 {{- printf .Values.ingress.adminFE.certificate }}
 {{- else }}
