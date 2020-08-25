@@ -1047,6 +1047,127 @@ questions:
     show_if: service.adminApi.type!=ClusterIP&&ingress.adminApi.enabled=false
     label: 'admin api http port'
     group: 'Services and Load Balancing'
+  - variable: ingress.toolsFe.enabled
+    default: true
+    description: ''
+    type: boolean
+    label: 'tools fe ingress enabled'
+    show_subquestion_if: true
+    group: 'Services and Load Balancing'
+    subquestions:
+      - variable: ingress.toolsFe.tls
+        default: false
+        description: ''
+        type: boolean
+        required: true
+        label: 'tools fe ingress tls'
+      - variable: ingress.toolsFe.hostname
+        default: xip.io
+        description: ''
+        type: hostname
+        required: true
+        label: 'tools fe ingress hostname'
+      - variable: ingress.toolsFe.issuer.name
+        default: letsencrypt-staging
+        description: ''
+        type: enum
+        show_if: ingress.toolsFe.tls=true
+        options:
+          - none
+          - letsencrypt-staging
+          - letsencrypt-prod
+        required: true
+        label: 'tools fe ingress issuer name'
+      - variable: ingress.toolsFe.certificate
+        default: ''
+        description: ''
+        type: string
+        show_if: ingress.toolsFe.tls=true&&ingress.toolsFe.issuer.name=none
+        required: false
+        label: 'tools fe ingress certificate'
+  - variable: service.toolsFe.type
+    default: NodePort
+    description: ''
+    type: enum
+    show_if: ingress.toolsFe.enabled=false
+    options:
+      - ClusterIP
+      - NodePort
+      - LoadBalancer
+    required: true
+    label: 'tools fe service type'
+    group: 'Services and Load Balancing'
+  - variable: service.toolsFe.ports.http
+    default: ''
+    description: ''
+    type: int
+    min: 30000
+    max: 32767
+    show_if: service.toolsFe.type!=ClusterIP&&ingress.toolsFe.enabled=false
+    label: 'tools fe http port'
+    group: 'Services and Load Balancing'
+  - variable: ingress.toolsApi.enabled
+    default: true
+    description: ''
+    type: boolean
+    label: 'tools api ingress enabled'
+    show_if: config.toolsApi.internal=true
+    show_subquestion_if: true
+    group: 'Services and Load Balancing'
+    subquestions:
+      - variable: ingress.toolsApi.tls
+        default: false
+        description: ''
+        type: boolean
+        required: true
+        label: 'tools api ingress tls'
+        show_if: config.toolsApi.internal=true
+      - variable: ingress.toolsApi.hostname
+        default: xip.io
+        description: ''
+        type: hostname
+        required: true
+        label: 'tools api ingress hostname'
+        show_if: config.toolsApi.internal=true
+      - variable: ingress.toolsApi.issuer.name
+        default: letsencrypt-staging
+        description: ''
+        type: enum
+        show_if: ingress.toolsApi.tls=true&&config.toolsApi.internal=true
+        options:
+          - none
+          - letsencrypt-staging
+          - letsencrypt-prod
+        required: true
+        label: 'tools api ingress issuer name'
+      - variable: ingress.toolsApi.certificate
+        default: ''
+        description: ''
+        type: string
+        show_if: ingress.toolsApi.tls=true&&ingress.toolsApi.issuer.name=none&&config.toolsApi.internal=true
+        required: false
+        label: 'tools api ingress certificate'
+  - variable: service.toolsApi.type
+    default: NodePort
+    description: ''
+    type: enum
+    show_if: ingress.toolsApi.enabled=false
+    options:
+      - ClusterIP
+      - NodePort
+      - LoadBalancer
+    required: true
+    label: 'tools api service type'
+    group: 'Services and Load Balancing'
+  - variable: service.toolsApi.ports.http
+    default: ''
+    description: ''
+    type: int
+    min: 30000
+    max: 32767
+    show_if: service.toolsApi.type!=ClusterIP&&ingress.toolsApi.enabled=false
+    label: 'tools api http port'
+    group: 'Services and Load Balancing'
   - variable: ingress.mongoExpress.enabled
     default: true
     description: ''
@@ -1168,6 +1289,36 @@ questions:
     required: true
     label: 'admin api tag'
     show_if: config.adminApi.internal=true
+    group: Images
+  - variable: images.toolsFe.repository
+    default: cvtecregistry.azurecr.io/ninet
+    description: ''
+    type: string
+    required: true
+    label: 'tools fe repository'
+    group: Images
+  - variable: images.toolsFe.tag
+    default: 1.0.0
+    description: ''
+    type: string
+    required: true
+    label: 'tools fe tag'
+    group: Images
+  - variable: images.toolsApi.repository
+    default: nginx
+    description: ''
+    type: string
+    required: true
+    label: 'tools api repository'
+    show_if: config.toolsApi.internal=true
+    group: Images
+  - variable: images.toolsApi.tag
+    default: latest
+    description: ''
+    type: string
+    required: true
+    label: 'tools api tag'
+    show_if: config.toolsApi.internal=true
     group: Images
   - variable: images.mongoExpress.repository
     default: mongo-express
