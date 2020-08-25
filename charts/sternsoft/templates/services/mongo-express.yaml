@@ -1,4 +1,4 @@
-{{- if (and .Values.config.api.internal (and .Values.config.mongodb.internal .Values.config.mongoExpress.enabled)) }}
+{{- if (and .Values.config.adminApi.internal (and .Values.config.mongodb.internal .Values.config.mongoExpress.enabled)) }}
 apiVersion: v1
 kind: Service
 metadata:
