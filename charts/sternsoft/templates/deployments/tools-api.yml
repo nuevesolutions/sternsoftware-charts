@@ -94,7 +94,7 @@ spec:
                   key: tools_debug
             - name: DOCKER_CUSTOM_IMAGE_NAME
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: {{ template "sternsoft.fullname" . }}
                   key: tools_docker_custom_image_name
             - name: DOCKER_REGISTRY_SERVER_PASSWORD
