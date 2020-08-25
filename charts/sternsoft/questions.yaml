@@ -56,7 +56,7 @@ questions:
     required: false
     label: 'calender reminder advance cron schedule'
     group: Config
-  - variable: config.alertPushCronSchedule
+  - variable: config.alertsPushCronSchedule
     default: '20 0 * * *'
     description: ''
     type: string
