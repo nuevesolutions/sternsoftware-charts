@@ -1,4 +1,4 @@
-{{- if (and .Values.config.api.internal (and .Values.config.mongodb.internal (not (and (eq .Values.config.mongodb.terminationPolicy "Pause") .Values.config.mongodb.pause)))) }}
+{{- if (and .Values.config.adminApi.internal (and .Values.config.mongodb.internal (not (and (eq .Values.config.mongodb.terminationPolicy "Pause") .Values.config.mongodb.pause)))) }}
 apiVersion: kubedb.com/v1alpha1
 kind: MongoDB
 metadata:
