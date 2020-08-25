@@ -117,7 +117,7 @@ questions:
     description: ''
     type: string
     required: false
-    label: 'tools admin api base url'
+    label: 'tools api base url'
     group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsWebsiteHttploggingRetentionDays
     default: '7'
