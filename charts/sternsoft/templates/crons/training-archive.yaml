@@ -43,7 +43,7 @@ spec:
               env:
                 - name: TOKEN
                   valueFrom:
-                    configMapKeyRef:
+                    secretKeyRef:
                       name: {{ template "sternsoft.fullname" . }}
                       key: cron_token
                 - name: BASE_URL

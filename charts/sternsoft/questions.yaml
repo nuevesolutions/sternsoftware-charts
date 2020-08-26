@@ -194,7 +194,7 @@ questions:
   - variable: config.toolsApi.toolsPm2SecretKey
     default: ''
     description: ''
-    type: string
+    type: password
     required: false
     label: 'tools pm2 secret Key'
     show_if: config.toolsApi.internal=true
