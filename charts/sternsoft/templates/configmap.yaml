@@ -28,7 +28,6 @@ data:
   app_title: {{ .Values.config.adminApi.appTitle | quote  }}
   azure_container: {{ .Values.config.adminApi.azureContainer | quote  }}
   azure_storage_account: {{ .Values.config.adminApi.azureStorageAccount | quote  }}
-  cron_token: {{ .Values.config.cronToken | quote }}
   debug: '*'
   docker_registry_server_url: {{ .Values.config.adminApi.dockerRegistryServerUrl | quote  }}
   docker_registry_server_username: {{ .Values.config.adminApi.dockerRegistryServerUsername | quote  }}
