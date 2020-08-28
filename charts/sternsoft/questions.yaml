@@ -321,7 +321,7 @@ questions:
     show_if: config.adminApi.internal=true
     group: 'ADMIN API Config'
   - variable: config.adminApi.toolsDomain
-    default: ''
+    default: 'https://cvt-tools-prod.azurewebsites.net/'
     description: ''
     type: string
     required: false
