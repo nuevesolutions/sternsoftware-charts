@@ -926,7 +926,7 @@ questions:
         label: 'stash restore snapshot mongodb'
 
 # Services and Load Balancing
-  - variable: ingress.adminFE.enabled
+  - variable: ingress.adminFe.enabled
     default: true
     description: ''
     type: boolean
@@ -934,41 +934,41 @@ questions:
     show_subquestion_if: true
     group: 'Services and Load Balancing'
     subquestions:
-      - variable: ingress.adminFE.tls
+      - variable: ingress.adminFe.tls
         default: false
         description: ''
         type: boolean
         required: true
         label: 'admin fe ingress tls'
-      - variable: ingress.adminFE.hostname
+      - variable: ingress.adminFe.hostname
         default: xip.io
         description: ''
         type: hostname
         required: true
         label: 'admin fe ingress hostname'
-      - variable: ingress.adminFE.issuer.name
+      - variable: ingress.adminFe.issuer.name
         default: letsencrypt-staging
         description: ''
         type: enum
-        show_if: ingress.adminFE.tls=true
+        show_if: ingress.adminFe.tls=true
         options:
           - none
           - letsencrypt-staging
           - letsencrypt-prod
         required: true
         label: 'admin fe ingress issuer name'
-      - variable: ingress.adminFE.certificate
+      - variable: ingress.adminFe.certificate
         default: ''
         description: ''
         type: string
-        show_if: ingress.adminFE.tls=true&&ingress.adminFE.issuer.name=none
+        show_if: ingress.adminFe.tls=true&&ingress.adminFe.issuer.name=none
         required: false
         label: 'admin fe ingress certificate'
-  - variable: service.adminFE.type
+  - variable: service.adminFe.type
     default: NodePort
     description: ''
     type: enum
-    show_if: ingress.adminFE.enabled=false
+    show_if: ingress.adminFe.enabled=false
     options:
       - ClusterIP
       - NodePort
@@ -976,13 +976,13 @@ questions:
     required: true
     label: 'admin fe service type'
     group: 'Services and Load Balancing'
-  - variable: service.adminFE.ports.http
+  - variable: service.adminFe.ports.http
     default: ''
     description: ''
     type: int
     min: 30000
     max: 32767
-    show_if: service.adminFE.type!=ClusterIP&&ingress.adminFE.enabled=false
+    show_if: service.adminFe.type!=ClusterIP&&ingress.adminFe.enabled=false
     label: 'admin fe http port'
     group: 'Services and Load Balancing'
   - variable: ingress.adminApi.enabled
@@ -1260,14 +1260,14 @@ questions:
     group: 'Services and Load Balancing'
 
 # Images
-  - variable: images.adminFE.repository
+  - variable: images.adminFe.repository
     default: cvtecregistry.azurecr.io/admin-fe
     description: ''
     type: string
     required: true
     label: 'admin fe repository'
     group: Images
-  - variable: images.adminFE.tag
+  - variable: images.adminFe.tag
     default: latest
     description: ''
     type: string

@@ -36,7 +36,7 @@ spec:
                       - spot
       containers:
         - name: {{ template "sternsoft.fullname" . }}-admin-fe
-          image: {{ .Values.images.adminFE.repository }}:{{ .Values.images.adminFE.tag }}
+          image: {{ .Values.images.adminFe.repository }}:{{ .Values.images.adminFe.tag }}
           imagePullPolicy: {{ .Values.config.imagePullPolicy }}
           ports:
             - name: container

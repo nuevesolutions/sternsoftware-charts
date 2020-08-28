@@ -1,4 +1,4 @@
-{{- if .Values.ingress.adminFE.enabled }}
+{{- if .Values.ingress.adminFe.enabled }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -9,9 +9,9 @@ metadata:
     {{- else }}
     kubernetes.io/ingress.class: nginx
     {{- end }}
-    {{- if .Values.ingress.adminFE.tls }}
-    {{- if (empty .Values.ingress.adminFE.certificate) }}
-    cert-manager.io/cluster-issuer: {{ .Values.ingress.adminFE.issuer.name }}
+    {{- if .Values.ingress.adminFe.tls }}
+    {{- if (empty .Values.ingress.adminFe.certificate) }}
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.adminFe.issuer.name }}
     kubernetes.io/tls-acme: 'true'
     {{- end }}
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
@@ -23,17 +23,17 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   rules:
-    - host: {{ .Values.ingress.adminFE.hostname }}
+    - host: {{ .Values.ingress.adminFe.hostname }}
       http:
         paths:
           - path: /
             backend:
               serviceName: {{ template "sternsoft.fullname" . }}-admin-fe
               servicePort: http
-  {{- if .Values.ingress.adminFE.tls }}
+  {{- if .Values.ingress.adminFe.tls }}
   tls:
-    - secretName: {{ template "sternsoft.adminFE-certificate" . }}
+    - secretName: {{ template "sternsoft.adminFe-certificate" . }}
       hosts:
-        - {{ .Values.ingress.adminFE.hostname }}
+        - {{ .Values.ingress.adminFe.hostname }}
   {{- end }}
 {{- end }}

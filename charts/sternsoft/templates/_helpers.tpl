@@ -20,17 +20,17 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this
 Calculate admin frontend certificate
 */}}
 {{- define "sternsoft.admin-fe-certificate" }}
-{{- if (not (empty .Values.ingress.adminFE.certificate)) }}
-{{- printf .Values.ingress.adminFE.certificate }}
+{{- if (not (empty .Values.ingress.adminFe.certificate)) }}
+{{- printf .Values.ingress.adminFe.certificate }}
 {{- else }}
-{{- printf "%s-adminFE-letsencrypt" (include "sternsoft.fullname" .) }}
+{{- printf "%s-adminFe-letsencrypt" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 
 {{/*
 Calculate tools frontend certificate
 */}}
-{{- define "sternsoft.toolsFe-certificate" }}
+{{- define "sternsoft.tools-fe-certificate" }}
 {{- if (not (empty .Values.ingress.toolsFe.certificate)) }}
 {{- printf .Values.ingress.toolsFe.certificate }}
 {{- else }}
@@ -75,13 +75,13 @@ Calculate mongo express certificate
 Calculate admin hostname
 */}}
 {{- define "sternsoft.admin-fe-hostname" }}
-{{- if (and .Values.config.adminFE.hostname (not (empty .Values.config.adminFE.hostname))) }}
-{{- printf .Values.config.adminFE.hostname }}
+{{- if (and .Values.config.adminFe.hostname (not (empty .Values.config.adminFe.hostname))) }}
+{{- printf .Values.config.adminFe.hostname }}
 {{- else }}
-{{- if .Values.ingress.adminFE.enabled }}
-{{- printf .Values.ingress.adminFE.hostname }}
+{{- if .Values.ingress.adminFe.enabled }}
+{{- printf .Values.ingress.adminFe.hostname }}
 {{- else }}
-{{- printf "%s-adminFE" (include "sternsoft.fullname" .) }}
+{{- printf "%s-adminFe" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 {{- end }}
@@ -90,12 +90,12 @@ Calculate admin hostname
 Calculate admin frontend base url
 */}}
 {{- define "sternsoft.admin-fe-base-url" }}
-{{- if (and .Values.config.adminFE.baseUrl (not (empty .Values.config.adminFE.baseUrl))) }}
-{{- printf .Values.config.adminFE.baseUrl }}
+{{- if (and .Values.config.adminFe.baseUrl (not (empty .Values.config.adminFe.baseUrl))) }}
+{{- printf .Values.config.adminFe.baseUrl }}
 {{- else }}
-{{- if .Values.ingress.adminFE.enabled }}
-{{- $hostname := ((empty (include "sternsoft.admin-fe-hostname" .)) | ternary .Values.ingress.adminFE.hostname (include "sternsoft.admin-fe-hostname" .)) }}
-{{- $protocol := (.Values.ingress.adminFE.tls | ternary "https" "http") }}
+{{- if .Values.ingress.adminFe.enabled }}
+{{- $hostname := ((empty (include "sternsoft.admin-fe-hostname" .)) | ternary .Values.ingress.adminFe.hostname (include "sternsoft.admin-fe-hostname" .)) }}
+{{- $protocol := (.Values.ingress.adminFe.tls | ternary "https" "http") }}
 {{- printf "%s://%s" $protocol $hostname }}
 {{- else }}
 {{- printf "http://%s" (include "sternsoft.admin-fe-hostname" .) }}
@@ -138,7 +138,7 @@ Calculate admin api base url
 {{/*
 Calculate tools api hostname
 */}}
-{{- define "sternsoft.toolsApi-hostname" }}
+{{- define "sternsoft.tools-api-hostname" }}
 {{- if (and .Values.config.toolsApi.hostname (not (empty .Values.config.toolsApi.hostname))) }}
 {{- printf .Values.config.toolsApi.hostname }}
 {{- else }}
@@ -153,16 +153,16 @@ Calculate tools api hostname
 {{/*
 Calculate tools api base url
 */}}
-{{- define "sternsoft.toolsApi-base-url" }}
+{{- define "sternsoft.tools-api-base-url" }}
 {{- if (and .Values.config.toolsApi.baseUrl (not (empty .Values.config.toolsApi.baseUrl))) }}
 {{- printf .Values.config.toolsApi.baseUrl }}
 {{- else }}
 {{- if .Values.ingress.toolsApi.enabled }}
-{{- $hostname := ((empty (include "sternsoft.toolsApi-hostname" .)) | ternary .Values.ingress.toolsApi.hostname (include "sternsoft.toolsApi-hostname" .)) }}
+{{- $hostname := ((empty (include "sternsoft.tools-api-hostname" .)) | ternary .Values.ingress.toolsApi.hostname (include "sternsoft.tools-api-hostname" .)) }}
 {{- $protocol := (.Values.ingress.toolsApi.tls | ternary "https" "http") }}
 {{- printf "%s://%s" $protocol $hostname }}
 {{- else }}
-{{- printf "http://%s" (include "sternsoft.toolsApi-hostname" .) }}
+{{- printf "http://%s" (include "sternsoft.tools-api-hostname" .) }}
 {{- end }}
 {{- end }}
 {{- end }}
@@ -170,7 +170,7 @@ Calculate tools api base url
 {{/*
 Calculate tools frontend hostname
 */}}
-{{- define "sternsoft.toolsFe-hostname" }}
+{{- define "sternsoft.tools-fe-hostname" }}
 {{- if (and .Values.config.toolsFe.hostname (not (empty .Values.config.toolsFe.hostname))) }}
 {{- printf .Values.config.toolsFe.hostname }}
 {{- else }}
@@ -185,16 +185,16 @@ Calculate tools frontend hostname
 {{/*
 Calculate tools frontend base url
 */}}
-{{- define "sternsoft.toolsFe-base-url" }}
+{{- define "sternsoft.tools-fe-base-url" }}
 {{- if (and .Values.config.toolsFe.baseUrl (not (empty .Values.config.toolsFe.baseUrl))) }}
 {{- printf .Values.config.toolsFe.baseUrl }}
 {{- else }}
 {{- if .Values.ingress.toolsFe.enabled }}
-{{- $hostname := ((empty (include "sternsoft.toolsFe-hostname" .)) | ternary .Values.ingress.toolsFe.hostname (include "sternsoft.toolsFe-hostname" .)) }}
+{{- $hostname := ((empty (include "sternsoft.tools-fe-hostname" .)) | ternary .Values.ingress.toolsFe.hostname (include "sternsoft.tools-fe-hostname" .)) }}
 {{- $protocol := (.Values.ingress.toolsFe.tls | ternary "https" "http") }}
 {{- printf "%s://%s" $protocol $hostname }}
 {{- else }}
-{{- printf "http://%s" (include "sternsoft.toolsFe-hostname" .) }}
+{{- printf "http://%s" (include "sternsoft.tools-fe-hostname" .) }}
 {{- end }}
 {{- end }}
 {{- end }}

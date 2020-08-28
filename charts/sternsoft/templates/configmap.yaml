@@ -43,8 +43,8 @@ data:
   twilio_phone_number: {{ .Values.config.adminApi.twilioPhoneNumber  | quote }}
   website_httplogging_retention_days:  {{ .Values.config.adminApi.websiteHttploggingRetentionDays | quote  }}
   websites_enable_app_service_storage:  {{ .Values.config.adminApi.websitesEnableAppServiceStorage | quote  }}
-  tools_admin_domain: {{ template "sternsoft.toolsFe-base-url" . }}
-  tools_api_base_url: {{ template "sternsoft.toolsApi-base-url" . }}
+  tools_admin_domain: {{ template "sternsoft.tools-fe-base-url" . }}
+  tools_api_base_url: {{ template "sternsoft.tools-api-base-url" . }}
   tools_app_description: {{ .Values.config.toolsApi.toolsAppDescription | quote  }}
   tools_app_keywords: {{ .Values.config.toolsApi.toolsAppKeyword | quote  }}
   tools_app_title: {{ .Values.config.toolsApi.toolsAppTitle | quote  }}
@@ -56,7 +56,7 @@ data:
   tools_docker_registry_server_username: {{ .Values.config.toolsApi.toolsDockerRegistryServerUsername | quote  }}
   tools_file_save_location: {{ .Values.config.toolsApi.toolsFileSaveLocation | quote  }}
   tools_pm2_public_key: {{ .Values.config.toolsApi.toolsPm2PublicKey | quote  }}
-  tools_domain: {{ template "sternsoft.toolsFe-base-url" . }}
+  tools_domain: {{ template "sternsoft.tools-fe-base-url" . }}
   tools_site_host: {{ template "sternsoft.fullname" . }}-toolsApi
   tools_website_httplogging_retention_days: {{ .Values.config.toolsApi.toolsWebsiteHttploggingRetentionDays | quote  }}
   tools_websites_enable_app_service_storage: {{ .Values.config.toolsApi.toolsWebsitesEnableAppServiceStorage | quote  }}

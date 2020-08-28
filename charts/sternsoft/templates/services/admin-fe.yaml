@@ -8,20 +8,20 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  {{- if .Values.ingress.adminFE.enabled }}
+  {{- if .Values.ingress.adminFe.enabled }}
   type: ClusterIP
   {{- else }}
-  type: {{ .Values.service.adminFE.type }}
-  {{- if (or (eq .Values.service.adminFE.type "LoadBalancer") (eq .Values.service.adminFE.type "NodePort")) }}
-  externalTrafficPolicy: {{ .Values.service.adminFE.externalTrafficPolicy }}
+  type: {{ .Values.service.adminFe.type }}
+  {{- if (or (eq .Values.service.adminFe.type "LoadBalancer") (eq .Values.service.adminFe.type "NodePort")) }}
+  externalTrafficPolicy: {{ .Values.service.adminFe.externalTrafficPolicy }}
   {{- end }}
   {{- end }}
   ports:
     - name: http
-      port: {{ (and (eq .Values.service.adminFE.type "LoadBalancer") (not (empty .Values.service.adminFE.ports.http))) | ternary .Values.service.adminFE.ports.http "80" }}
+      port: {{ (and (eq .Values.service.adminFe.type "LoadBalancer") (not (empty .Values.service.adminFe.ports.http))) | ternary .Values.service.adminFe.ports.http "80" }}
       targetPort: container
-      {{- if (and (eq .Values.service.adminFE.type "NodePort") (not (empty .Values.service.adminFE.ports.http))) }}
-      nodePort: {{ .Values.service.adminFE.ports.http }}
+      {{- if (and (eq .Values.service.adminFe.type "NodePort") (not (empty .Values.service.adminFe.ports.http))) }}
+      nodePort: {{ .Values.service.adminFe.ports.http }}
       {{- end }}
   selector:
     app: {{ template "sternsoft.name" . }}-admin-fe
