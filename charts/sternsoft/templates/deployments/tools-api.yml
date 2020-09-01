@@ -127,11 +127,11 @@ spec:
                 secretKeyRef:
                   name: {{ template "sternsoft.fullname" . }}
                   key: tools_pm2_secret_key
-            - name: TOOLS_DOMAIN
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ template "sternsoft.fullname" . }}
-                  key: tools_domain
+            # - name: TOOLS_DOMAIN
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ template "sternsoft.fullname" . }}
+            #       key: tools_domain
             - name: TOOLS_SITE_HOST
               valueFrom:
                 configMapKeyRef:

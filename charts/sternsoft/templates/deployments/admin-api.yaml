@@ -172,11 +172,11 @@ spec:
                 secretKeyRef:
                   name: {{ template "sternsoft.fullname" . }}
                   key: tools_client_key
-            - name: TOOLS_DOMAIN
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ template "sternsoft.fullname" . }}
-                  key: tools_domain
+            # - name: TOOLS_DOMAIN
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ template "sternsoft.fullname" . }}
+            #       key: tools_domain
             - name: TWILIO_ACCOUNT_SID
               valueFrom:
                 configMapKeyRef:

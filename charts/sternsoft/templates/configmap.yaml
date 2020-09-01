@@ -38,7 +38,7 @@ data:
   mail_from_who: {{ .Values.config.adminApi.mailFromWho | quote }}
   max_vote_num_every_day: {{ .Values.config.adminApi.maxVoteNumEveryDay | quote }}
   node_env: 'production'
-  tools_domain: {{ .Values.config.adminApi.toolsDomain | quote  }}
+  # tools_domain: {{ .Values.config.adminApi.toolsDomain | quote  }}
   twilio_account_sid: {{ .Values.config.adminApi.twilioAccountSid  | quote }}
   twilio_phone_number: {{ .Values.config.adminApi.twilioPhoneNumber  | quote }}
   website_httplogging_retention_days:  {{ .Values.config.adminApi.websiteHttploggingRetentionDays | quote  }}

@@ -135,14 +135,14 @@ questions:
     label: 'tools websites enable app service storage'
     show_if: config.toolsApi.internal=true
     group: 'TOOLS API Config'
-  - variable: config.toolsApi.toolsDomain
-    default: ''
-    description: ''
-    type: string
-    required: false
-    label: 'tools domain'
-    show_if: config.toolsApi.internal=true
-    group: 'TOOLS API Config'
+  # - variable: config.toolsApi.toolsDomain
+  #   default: ''
+  #   description: ''
+  #   type: string
+  #   required: false
+  #   label: 'tools domain'
+  #   show_if: config.toolsApi.internal=true
+  #   group: 'TOOLS API Config'
   - variable: config.toolsApi.toolsAzureContainer
     default: 'tools-prod'
     description: ''
@@ -320,14 +320,14 @@ questions:
     label: 'tools client key'
     show_if: config.adminApi.internal=true
     group: 'ADMIN API Config'
-  - variable: config.adminApi.toolsDomain
-    default: 'https://cvt-tools-prod.azurewebsites.net/'
-    description: ''
-    type: string
-    required: false
-    label: 'tools domain'
-    show_if: config.adminApi.internal=true
-    group: 'ADMIN API Config'
+  # - variable: config.adminApi.toolsDomain
+  #   default: 'https://cvt-tools-prod.azurewebsites.net/'
+  #   description: ''
+  #   type: string
+  #   required: false
+  #   label: 'tools domain'
+  #   show_if: config.adminApi.internal=true
+  #   group: 'ADMIN API Config'
 
 # Azure
   - variable: config.adminApi.azureContainer
