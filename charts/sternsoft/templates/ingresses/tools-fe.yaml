@@ -32,7 +32,7 @@ spec:
               servicePort: http
   {{- if .Values.ingress.toolsFe.tls }}
   tls:
-    - secretName: {{ template "sternsoft.toolsFe-certificate" . }}
+    - secretName: {{ template "sternsoft.tools-fe-certificate" . }}
       hosts:
         - {{ .Values.ingress.toolsFe.hostname }}
   {{- end }}
