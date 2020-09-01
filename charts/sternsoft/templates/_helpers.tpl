@@ -23,7 +23,7 @@ Calculate admin frontend certificate
 {{- if (not (empty .Values.ingress.adminFe.certificate)) }}
 {{- printf .Values.ingress.adminFe.certificate }}
 {{- else }}
-{{- printf "%s-adminFe-letsencrypt" (include "sternsoft.fullname" .) }}
+{{- printf "%s-admin-fe-letsencrypt" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 
@@ -45,7 +45,7 @@ Calculate admin api certificate
 {{- if (not (empty .Values.ingress.adminApi.certificate)) }}
 {{- printf .Values.ingress.adminApi.certificate }}
 {{- else }}
-{{- printf "%s-adminApi-letsencrypt" (include "sternsoft.fullname" .) }}
+{{- printf "%s-admin-api-letsencrypt" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 
@@ -56,7 +56,7 @@ Calculate tools api certificate
 {{- if (not (empty .Values.ingress.toolsApi.certificate)) }}
 {{- printf .Values.ingress.toolsApi.certificate }}
 {{- else }}
-{{- printf "%s-toolsApi-letsencrypt" (include "sternsoft.fullname" .) }}
+{{- printf "%s-tools-api-letsencrypt" (include "sternsoft.fullname" .) }}
 {{- end }}
 {{- end }}
 
