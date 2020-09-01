@@ -82,7 +82,7 @@ questions:
 
 # Tools API Config
   - variable: config.toolsApi.internal
-    default: true
+    default: false
     description: ''
     type: boolean
     required: true
@@ -243,7 +243,7 @@ questions:
 
 # ADMIN API Config
   - variable: config.adminApi.internal
-    default: true
+    default: false
     description: ''
     type: boolean
     required: true
