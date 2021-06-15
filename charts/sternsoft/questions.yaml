@@ -70,6 +70,20 @@ questions:
     required: false
     label: 'alerts archive cron schedule'
     group: Config
+  - variable: config.documentsPublishCronSchedule
+    default: '0 0 * * *'
+    description: ''
+    type: string
+    required: false
+    label: 'alerts documents publish schedule'
+    group: Config
+  - variable: config.usersRemoveCronSchedule
+    default: '0 0 * * *'
+    description: ''
+    type: string
+    required: false
+    label: 'users remove cron schedule'
+    group: Config
   - variable: config.cronToken
     default: ''
     description: ''
@@ -77,6 +91,7 @@ questions:
     required: false
     label: 'cron token'
     group: Config
+
 
 # Tools Admin Config
 
